@@ -1,6 +1,6 @@
 import React from "react";
 import Picks from "./components/Picks";
-
+import "./App.css";
 const sampleItems = [
   {
     image: "path/to/image1.jpg",
