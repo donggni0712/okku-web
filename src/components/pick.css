@@ -1,0 +1,23 @@
+.pick {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.pick-image {
+  width: 100%;
+  height: auto;
+}
+
+.pick-price {
+  font-size: 1.2em;
+  color: #333;
+  margin-top: 10px;
+}
+
+.pick-name {
+  font-size: 1em;
+  color: #666;
+  margin-top: 5px;
+}
