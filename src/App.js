@@ -3,22 +3,22 @@ import Picks from "./components/Picks";
 import "./App.css";
 const sampleItems = [
   {
-    image: "path/to/image1.jpg",
+    image: "dummy/picks/image1.png",
     price: "53,677원",
     name: "Halter-neck Knit top",
   },
   {
-    image: "path/to/image2.jpg",
+    image: "dummy/picks/image2.png",
     price: "29,900원",
     name: "무테드 슬로건 반팔 티",
   },
   {
-    image: "path/to/image3.jpg",
+    image: "dummy/picks/image3.png",
     price: "31,900원",
     name: "골지 브라 오프더숄더",
   },
   {
-    image: "path/to/image3.jpg",
+    image: "dummy/picks/image3.png",
     price: "31,900원",
     name: "골지 브라 오프더숄더",
   },

@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Three equal-width columns */
   gap: 10px; /* Space between items */
+  margin: 10px;
 }
 
 .picks {
