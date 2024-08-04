@@ -1,0 +1,73 @@
+/* src/components/Cart.css */
+.cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.cart-images {
+  position: relative;
+  width: 100px; /* Adjust width as needed */
+  height: 100px; /* Adjust height as needed */
+}
+
+.cart-images img {
+  position: absolute;
+  width: 80px; /* Adjust width as needed */
+  height: 80px; /* Adjust height as needed */
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+.image-0 {
+  top: 0;
+  left: 0;
+  z-index: 6;
+  transform: rotate(0deg);
+}
+
+.image-1 {
+  top: 4px;
+  left: 6px;
+  z-index: 5;
+  transform: rotate(-5deg);
+  filter: brightness(90%);
+}
+
+.image-2 {
+  top: 7px;
+  left: -6px;
+  z-index: 4;
+  transform: rotate(7deg);
+  filter: brightness(80%);
+}
+
+.image-3 {
+  top: -4px;
+  left: 8px;
+  z-index: 3;
+  transform: rotate(-2deg);
+  filter: brightness(75%);
+}
+
+.image-4 {
+  top: -5px;
+  left: -8px;
+  z-index: 2;
+  transform: rotate(-20deg);
+  filter: brightness(70%);
+}
+
+.image-5 {
+  top: 3px;
+  left: 8px;
+  z-index: 1;
+  transform: rotate(-20deg);
+  filter: brightness(65%);
+}
+
+.cart-name {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px; /* Adjust font size as needed */
+}

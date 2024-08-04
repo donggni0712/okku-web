@@ -14,7 +14,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.App {
+.app-body {
   width: 100%;
   max-width: 500px; /* 1000px -> rem 단위로 변환 */
   margin: 0 auto;

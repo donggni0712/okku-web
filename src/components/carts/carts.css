@@ -1,0 +1,23 @@
+/* src/components/Carts.css */
+.carts-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carts {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+.cart,
+.add-cart {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.add-cart {
+  cursor: pointer;
+}
