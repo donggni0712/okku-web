@@ -1,5 +1,5 @@
 // src/App.js
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import useGetPicks from "./hooks/userGetPick";
 import useGetCarts from "./hooks/userGetCart";
@@ -8,11 +8,15 @@ import Carts from "./components/carts/Carts";
 import { PopupProvider, usePopup } from "./context/PopupContext";
 import CentralPopup from "./components/popup/CentralPopup";
 import BottomPopup from "./components/popup/BottomPopup";
+import NewCartInput from "./components/createCart/NewCartInput";
 
 const App = () => {
-  const { getPickData, getPickLoading, getPickError } = useGetPicks();
-  const { getCartData, getCartLoading, getCartErro } = useGetCarts();
-  const { showPopup } = usePopup();
+  const [cartData, setCartData] = useState();
+  const [pickData, setPickData] = useState();
+  const { showPopup, hidePopup } = usePopup();
+
+  // const { getPickData, getPickLoading, getPickError } = useGetPicks();
+  // const { getCartLoading, getCartErro } = useGetCarts(setCartData);
 
   const handleCentralPopup = () => {
     showPopup(
@@ -36,26 +40,15 @@ const App = () => {
     );
   };
 
-  const handleCartsPopup = () => {
-    showPopup(
-      "bottom",
-      <Carts carts={getCartData.carts} onAdd={handleCartsPopup} />
-    );
-  };
-
-  if (getPickLoading || getCartLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (getPickError || getCartErro) {
-    return <div>Error fetching data</div>;
-  }
-
   return (
     <div className="App">
-      <Carts carts={getCartData.carts} onAdd={handleCartsPopup} />
+      <Carts
+        // onAdd={showCartsPopup}
+        cartData={cartData}
+        setCartData={setCartData}
+      />
       <div className="app-body">
-        <Picks picks={getPickData.picks} />
+        <Picks />
       </div>
     </div>
   );

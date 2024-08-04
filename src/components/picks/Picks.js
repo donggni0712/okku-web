@@ -1,12 +1,20 @@
 import React from "react";
 import Pick from "../pick/Pick";
 import "./picks.css"; // Create a CSS file for styling
+import useGetPicks from "../../hooks/userGetPick";
 
-const Picks = ({ picks }) => {
-  console.log(picks);
+const Picks = () => {
+  const { getPickData, getPickLoading, getPickError } = useGetPicks();
+  if (getPickLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (getPickError) {
+    return <div>Error fetching data</div>;
+  }
   return (
     <div className="picks-grid">
-      {picks.map((pick, index) => (
+      {getPickData.picks.map((pick, index) => (
         <Pick
           key={index}
           image={pick.image}

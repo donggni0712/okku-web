@@ -1,8 +1,7 @@
-// src/hooks/useFetchCarts.js
 import { useState, useEffect } from "react";
 import { getCarts } from "../api/getCarts";
 
-const useGetCarts = (page = 1, size = 10) => {
+const useGetCarts = (setCartData, page = 1, size = 10) => {
   const [getCartData, setGetCartData] = useState([]);
   const [getCartLoading, setLoading] = useState(true);
   const [getCartError, setError] = useState(null);
@@ -12,15 +11,18 @@ const useGetCarts = (page = 1, size = 10) => {
       try {
         const data = await getCarts(page, size);
         setGetCartData(data);
-      } catch (getCartError) {
-        setError(getCartError);
+        if (setCartData) {
+          setCartData(data.carts); // Assuming `data.carts` is the actual cart data
+        }
+      } catch (error) {
+        setError(error);
       } finally {
         setLoading(false);
       }
     };
 
     fetchData();
-  }, [page, size]);
+  }, [page, size, setCartData]);
 
   return { getCartData, getCartLoading, getCartError };
 };
