@@ -1,5 +1,5 @@
 import React from "react";
-import Pick from "./Pick";
+import Pick from "../pick/Pick";
 import "./picks.css"; // Create a CSS file for styling
 
 const Picks = ({ picks }) => {

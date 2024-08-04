@@ -4,16 +4,16 @@ import { getPicks } from "../api/getPicks";
 
 const useGetPicks = (page = 1, size = 10) => {
   const [getPickData, setGetPickData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [getPickLoading, setLoading] = useState(true);
+  const [getPickError, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await getPicks(page, size);
         setGetPickData(data);
-      } catch (error) {
-        setError(error);
+      } catch (getPickError) {
+        setError(getPickError);
       } finally {
         setLoading(false);
       }
@@ -22,7 +22,7 @@ const useGetPicks = (page = 1, size = 10) => {
     fetchData();
   }, [page, size]);
 
-  return { getPickData, loading, error };
+  return { getPickData, getPickLoading, getPickError };
 };
 
 export default useGetPicks;
