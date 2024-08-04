@@ -1,0 +1,32 @@
+.pick {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.pick-image-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* Create a square by setting height relative to width */
+  overflow: hidden;
+}
+
+.pick-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.pick-price {
+  font-size: 1.2em;
+  color: #333;
+  margin-top: 10px;
+}
+
+.pick-name {
+  font-size: 1em;
+  color: #666;
+  margin-top: 5px;
+}
