@@ -1,4 +1,5 @@
 import axios from "axios";
+import api from "./api";
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const movePick = async (
   pickIds,
@@ -7,7 +8,7 @@ const movePick = async (
   isDeleteFromOrigin
 ) => {
   try {
-    const response = await axios.patch(`${API_BASE_URL}/picks`, {
+    const response = await api.patch(`/picks`, {
       pickIds: pickIds,
       sourceCartId: sourceCartId,
       destinationCartId: destinationCartId,

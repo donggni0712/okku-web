@@ -1,5 +1,4 @@
-// src/App.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import useGetPicks from "./hooks/userGetPick";
 import useGetCarts from "./hooks/userGetCart";
@@ -9,14 +8,27 @@ import { PopupProvider, usePopup } from "./context/PopupContext";
 import CentralPopup from "./components/popup/CentralPopup";
 import BottomPopup from "./components/popup/BottomPopup";
 import NewCartInput from "./components/createCart/NewCartInput";
+import KakaoLoginButton from "./components/login/kakaologinbutton";
+import { setTokens } from "./service/authService";
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cartData, setCartData] = useState();
   const [pickData, setPickData] = useState();
   const { showPopup, hidePopup } = usePopup();
 
-  // const { getPickData, getPickLoading, getPickError } = useGetPicks();
-  // const { getCartLoading, getCartErro } = useGetCarts(setCartData);
+  useEffect(() => {
+    // 카카오 로그인 여부 확인
+    if (window.Kakao.Auth.getAccessToken()) {
+      setIsLoggedIn(true);
+      setTokens(
+        window.Kakao.Auth.getAccessToken(),
+        localStorage.getItem("refreshToken")
+      );
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
 
   const handleCentralPopup = () => {
     showPopup(
@@ -40,19 +52,29 @@ const App = () => {
     );
   };
 
+  const handleLoginSuccess = (tokens) => {
+    setIsLoggedIn(true);
+    console.log("dd");
+    console.log(tokens);
+    setTokens(tokens.accessToken, tokens.refreshToken);
+  };
+
   return (
     <div className="App">
-      <Carts
-        // onAdd={showCartsPopup}
-        cartData={cartData}
-        setCartData={setCartData}
-      />
-      <div className="app-body">
-        <Picks />
-      </div>
+      {isLoggedIn ? (
+        <>
+          <Carts cartData={cartData} setCartData={setCartData} />
+          <div className="app-body">
+            <Picks />
+          </div>
+        </>
+      ) : (
+        <KakaoLoginButton onLoginSuccess={handleLoginSuccess} />
+      )}
     </div>
   );
 };
+
 const AppWrapper = () => (
   <PopupProvider>
     <App />
