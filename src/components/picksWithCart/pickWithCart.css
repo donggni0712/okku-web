@@ -1,0 +1,41 @@
+.picks-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  max-width: 500px;
+}
+
+.header-left p {
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  gap: 10px;
+}
+
+.add-button,
+.edit-button {
+  padding: 10px 20px;
+  background-color: #23b169;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-button:hover,
+.edit-button:hover {
+  background-color: #1c8c53;
+}

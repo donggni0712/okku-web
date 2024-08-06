@@ -6,7 +6,6 @@ let refreshToken = localStorage.getItem("refreshToken") || null;
 const setTokens = (newAccessToken, newRefreshToken) => {
   accessToken = newAccessToken;
   refreshToken = newRefreshToken;
-  console.log(refreshToken);
   localStorage.setItem("refreshToken", newRefreshToken);
 };
 
@@ -43,7 +42,6 @@ api.interceptors.response.use(
     const originalRequest = error.config;
 
     if (error.response.status === 401 && !originalRequest._retry) {
-      console.log("ccc");
       originalRequest._retry = true;
       const newAccessToken = await refreshAccessToken();
       api.defaults.headers.common["Authorization"] = `Bearer ${newAccessToken}`;

@@ -12,7 +12,7 @@ const useGetCarts = (setCartData, page = 1, size = 10) => {
         const data = await getCarts(page, size);
         setGetCartData(data);
         if (setCartData) {
-          setCartData(data.carts); // Assuming `data.carts` is the actual cart data
+          setCartData(data); // Assuming `data.carts` is the actual cart data
         }
       } catch (error) {
         setError(error);
