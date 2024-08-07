@@ -5,6 +5,7 @@ import "./carts.css";
 import useGetCarts from "../../hooks/userGetCart";
 import { usePopup } from "../../context/PopupContext";
 import NewCartInput from "../createCart/NewCartInput";
+import { getCarts } from "../../api/getCarts";
 
 const Carts = ({ cartData, setCartData, isPopup = false, handleClick }) => {
   const { getCartLoading, getCartErro } = useGetCarts(setCartData);
@@ -47,6 +48,7 @@ const Carts = ({ cartData, setCartData, isPopup = false, handleClick }) => {
         <NewCartInput
           onBack={showCartsPopup}
           callBackOnSave={callBackSaveCart}
+          setCartData={setCartData}
           pickIds={[]}
         />
       );
@@ -56,17 +58,15 @@ const Carts = ({ cartData, setCartData, isPopup = false, handleClick }) => {
         <NewCartInput
           onBack={hidePopup}
           callBackOnSave={callBackSaveCart}
+          setCartData={setCartData}
           pickIds={[]}
         />
       );
     }
   };
 
-  const callBackSaveCart = (cartName, pickIds) => {
-    const updatedCarts = [
-      ...cartData.carts,
-      { name: cartName, pickIds: pickIds, picksImages: [] },
-    ];
+  const callBackSaveCart = async () => {
+    let updatedCarts = await getCarts();
     setCartData(updatedCarts);
     hidePopup();
   };

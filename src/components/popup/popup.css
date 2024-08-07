@@ -45,3 +45,13 @@
   padding: 10px 20px;
   margin: 5px;
 }
+.central-popup-title {
+  font-size: 22px;
+  margin-bottom: 0.5em;
+}
+
+.central-popup-message {
+  font-size: 14px;
+  color: #666; /* 연한 회색 */
+  margin-bottom: 1em;
+}

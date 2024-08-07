@@ -59,7 +59,8 @@ const PickWithCart = ({
     showPopup(
       "central",
       <CentralPopup
-        message="옷을 카트에서 삭제하시겠습니까? 전체 목록에선느 옷이 유지됩니다."
+        title="옷을 카트에서 삭제하시겠습니까?"
+        message="전체 목록에서는 옷이 유지됩니다."
         button1={{
           text: "예",
           onClick: async () => {
@@ -83,17 +84,20 @@ const PickWithCart = ({
     );
   };
 
-  const showCartPopup = () => {
+  const showCartPopup = async () => {
+    const tempCart = await getCarts();
+    setCartData(tempCart);
     showPopup(
       "bottom",
       <Carts
-        cartData={cartData}
+        cartData={tempCart}
         setCartData={setCartData}
         isPopup={true}
         handleClick={showAddPickToCartPopup}
       />
     );
   };
+
   const handleEditToggle = () => {
     setIsEditing((prev) => {
       if (prev) {
@@ -102,18 +106,20 @@ const PickWithCart = ({
       return !prev;
     });
   };
-  const showAddPickToCartPopup = async (cartId) => {
+
+  const showAddPickToCartPopup = async (clickedCartId) => {
     showPopup(
       "central",
       <CentralPopup
-        message="픽을 카트에 담겠습니까?"
+        title="다른 카트로 옮길까요?"
+        message="옮겨진 옷은 기존 카트에서는 사라져요."
         button1={{
-          text: "예",
+          text: "여기도 남길게요",
           onClick: async () => {
             await movePick(
               selectedPicks.map((el) => el.id),
-              "",
-              cartId,
+              cartId, // 현재 최상단 카트의 ID
+              clickedCartId,
               false
             );
             const carts = await getCarts();
@@ -124,7 +130,25 @@ const PickWithCart = ({
             hidePopup();
           },
         }}
-        button2={{ text: "아니오", onClick: hidePopup }}
+        button2={{
+          text: "확인",
+          onClick: async () => {
+            await movePick(
+              selectedPicks.map((el) => el.id),
+              cartId, // 현재 최상단 카트의 ID
+              clickedCartId,
+              true
+            );
+            const carts = await getCarts();
+            const picks = await getPicks(cartId);
+            setPickData(picks);
+            setCartData(carts);
+            setIsEditing(false);
+            setSelectedPicks([]);
+            setNotification("픽이 이동되었습니다.");
+            hidePopup();
+          },
+        }}
       />
     );
   };
