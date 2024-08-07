@@ -2,14 +2,17 @@
 import React, { useState } from "react";
 import "./newCartInput.css"; // Import the CSS file for styling
 import { createCart } from "../../api/createCart";
+import { getCarts } from "../../api/getCarts";
 // import backButtonImage from ;
 
-const NewCartInput = ({ onBack, callBackOnSave, pickIds }) => {
+const NewCartInput = ({ onBack, callBackOnSave, pickIds, setCartData }) => {
   const [cartName, setCartName] = useState("");
 
-  const handleSave = () => {
+  const handleSave = async () => {
     createCart(cartName, pickIds);
-    callBackOnSave(cartName, pickIds);
+    const tempCarts = await getCarts();
+    setCartData(tempCarts);
+    callBackOnSave();
   };
 
   return (
