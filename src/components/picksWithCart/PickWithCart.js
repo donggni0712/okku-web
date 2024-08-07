@@ -145,7 +145,7 @@ const PickWithCart = ({
             setCartData(carts);
             setIsEditing(false);
             setSelectedPicks([]);
-            setNotification("픽이 카트에 담겼습니다.");
+            setNotification("픽이 이동되었습니다.");
             hidePopup();
           },
         }}
