@@ -35,6 +35,10 @@
 .central-popup p {
   margin-bottom: 20px;
 }
+.popup-content {
+  z-index: 2100;
+  background: "#fafa41";
+}
 
 .central-popup button,
 .bottom-popup button {

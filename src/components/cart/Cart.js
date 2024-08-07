@@ -2,8 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./cart.css";
-
-const Cart = ({ images, name }) => {
+const Cart = ({ cartId, images, name, handleClick }) => {
   const dummyImage = "https://via.placeholder.com/100"; // Replace with actual dummy image URL
   const filledImages = [
     ...images,
@@ -11,7 +10,7 @@ const Cart = ({ images, name }) => {
   ];
 
   return (
-    <div className="cart">
+    <div className="cart" onClick={() => handleClick(cartId)}>
       <div className="cart-images">
         {filledImages.map((image, index) => (
           <img

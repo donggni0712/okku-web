@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { getPicks } from "../api/getPicks";
 
-const useGetPicks = (page = 1, size = 10) => {
+const useGetPicks = (setPickData, cartId = null, page = 1, size = 30) => {
   const [getPickData, setGetPickData] = useState([]);
   const [getPickLoading, setLoading] = useState(true);
   const [getPickError, setError] = useState(null);
@@ -10,8 +10,13 @@ const useGetPicks = (page = 1, size = 10) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getPicks(page, size);
+        const data = await getPicks(cartId, page, size);
+        console.log(data);
+        console.log(data.picks);
         setGetPickData(data);
+        if (setPickData) {
+          setPickData(data);
+        }
       } catch (getPickError) {
         setError(getPickError);
       } finally {

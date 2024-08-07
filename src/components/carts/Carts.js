@@ -6,7 +6,7 @@ import useGetCarts from "../../hooks/userGetCart";
 import { usePopup } from "../../context/PopupContext";
 import NewCartInput from "../createCart/NewCartInput";
 
-const Carts = ({ cartData, setCartData, isPopup = false }) => {
+const Carts = ({ cartData, setCartData, isPopup = false, handleClick }) => {
   const { getCartLoading, getCartErro } = useGetCarts(setCartData);
   const { showPopup, hidePopup } = usePopup();
   if (getCartLoading) {
@@ -29,14 +29,18 @@ const Carts = ({ cartData, setCartData, isPopup = false }) => {
     name: "카트 추가",
   };
   const showCartsPopup = (cartData) => {
-    console.log(cartData);
     showPopup(
       "bottom",
-      <Carts cartData={cartData} setCartData={setCartData} isPopup={true} />
+      <Carts
+        cartData={cartData}
+        setCartData={setCartData}
+        isPopup={true}
+        handleClick={handleClick}
+      />
     );
   };
+
   const handleAddCart = () => {
-    console.log(isPopup);
     if (isPopup) {
       showPopup(
         "bottom",
@@ -57,12 +61,12 @@ const Carts = ({ cartData, setCartData, isPopup = false }) => {
       );
     }
   };
-  // const handleSaveCart = (cartName, cartData, setCartData) => {
 
-  //   showCartsPopup();
-  // };
   const callBackSaveCart = (cartName, pickIds) => {
-    const updatedCarts = [...cartData, { name: cartName, pickIds: pickIds }];
+    const updatedCarts = [
+      ...cartData.carts,
+      { name: cartName, pickIds: pickIds, picksImages: [] },
+    ];
     setCartData(updatedCarts);
     hidePopup();
   };
@@ -71,11 +75,17 @@ const Carts = ({ cartData, setCartData, isPopup = false }) => {
     <div className="carts-container">
       <div className="carts">
         <Cart {...allViewCart} />
-        {cartData.map((cart, index) => (
-          <Cart key={index} images={cart.picksImages} name={cart.name} />
+        {cartData.carts.map((cart, index) => (
+          <Cart
+            cartId={cart.id}
+            key={index}
+            images={cart.picksImages}
+            name={cart.name}
+            handleClick={handleClick}
+          />
         ))}
-        <div className="add-cart" onClick={handleAddCart}>
-          <Cart {...addCart} />
+        <div className="add-cart">
+          <Cart {...addCart} handleClick={handleAddCart} />
         </div>
       </div>
     </div>

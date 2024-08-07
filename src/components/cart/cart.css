@@ -1,9 +1,10 @@
-/* src/components/Cart.css */
 .cart {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 10px;
+  width: 120px; /* Set a fixed width for the cart container */
+  height: 180px; /* Set a fixed height for the cart container (adjust as needed) */
 }
 
 .cart-images {
@@ -19,6 +20,7 @@
   object-fit: cover;
   border: 1px solid #ccc;
 }
+
 .image-0 {
   top: 0;
   left: 0;
@@ -69,5 +71,10 @@
 .cart-name {
   margin-top: 10px;
   text-align: center;
-  font-size: 14px; /* Adjust font size as needed */
+  font-size: 12px;
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  overflow: hidden; /* Hide text that overflows the container */
+  text-overflow: ellipsis; /* Show '...' for overflowing text */
+  display: block; /* Ensure the element behaves like a block-level element */
+  width: 100%; /* Ensure the container width is defined */
 }

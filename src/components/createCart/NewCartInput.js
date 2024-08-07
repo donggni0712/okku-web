@@ -29,7 +29,7 @@ const NewCartInput = ({ onBack, callBackOnSave, pickIds }) => {
         </button>
       </div>
       <textarea
-        className="textarea"
+        className="text"
         value={cartName}
         onChange={(e) => setCartName(e.target.value)}
         placeholder="새 카트 이름 입력"
