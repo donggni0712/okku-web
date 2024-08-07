@@ -55,7 +55,8 @@ const PickWithoutCart = ({
     showPopup(
       "central",
       <CentralPopup
-        message="삭제하시겠습니까?"
+        title="픽을 삭제하시겠습니까?"
+        message="픽이 담긴 모든 카트에서도 해당 픽이 삭제됩니다."
         button1={{
           text: "예",
           onClick: async () => {
@@ -96,7 +97,7 @@ const PickWithoutCart = ({
     showPopup(
       "central",
       <CentralPopup
-        message="픽을 카트에 담겠습니까?"
+        title="픽을 카트에 담겠습니까?"
         button1={{
           text: "예",
           onClick: async () => {

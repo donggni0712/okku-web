@@ -24,7 +24,7 @@ const Main = ({
     showPopup(
       "central",
       <CentralPopup
-        message="저장하시겠습니까?"
+        title="저장하시겠습니까?"
         button1={{ text: "예", onClick: () => alert("예 클릭됨") }}
         button2={{ text: "아니오", onClick: () => alert("아니오 클릭됨") }}
       />

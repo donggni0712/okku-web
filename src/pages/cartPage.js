@@ -12,6 +12,7 @@ import PickWithCart from "../components/picksWithCart/PickWithCart";
 import { getPicks } from "../api/getPicks";
 import useGetPicks from "../hooks/userGetPick";
 import { deleteCart } from "../api/deleteCart";
+import { getCarts } from "../api/getCarts";
 
 const CartPage = ({ isLoggedIn, handleLoginSuccess, setNotification }) => {
   const navigate = useNavigate();
@@ -20,13 +21,12 @@ const CartPage = ({ isLoggedIn, handleLoginSuccess, setNotification }) => {
   const [pickData, setPickData] = useState();
   const { showPopup, hidePopup } = usePopup();
 
-  console.log("a");
-  console.log(pickData);
   const handleDeleteCart = () => {
     showPopup(
       "central",
       <CentralPopup
-        message="카트를 삭제하시겠습니까?"
+        title="카트를 삭제하시겠습니까?"
+        message="옷이 담긴 모든 카트에서도 해당 옷이 삭제됩니다."
         button1={{
           text: "예",
           onClick: async () => {
