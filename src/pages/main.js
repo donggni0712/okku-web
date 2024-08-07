@@ -10,7 +10,12 @@ import { setTokens } from "../service/authService";
 import { movePick } from "../api/movePick";
 import PickWithoutCart from "../components/picksWithCart/PickWithoutCartComponent";
 
-const Main = ({ handleLoginSuccess, isLoggedIn }) => {
+const Main = ({
+  handleLoginSuccess,
+  isLoggedIn,
+  notification,
+  setNotification,
+}) => {
   const [cartData, setCartData] = useState();
   const [pickData, setPickData] = useState();
   const { showPopup, hidePopup } = usePopup();
@@ -52,6 +57,8 @@ const Main = ({ handleLoginSuccess, isLoggedIn }) => {
             cartData={cartData}
             setCartData={setCartData}
             handleClick={handleClickToCartMove}
+            notification={notification}
+            setNotification={setNotification}
           />
           <div className="app-body">
             <PickWithoutCart
@@ -59,6 +66,8 @@ const Main = ({ handleLoginSuccess, isLoggedIn }) => {
               setPickData={setPickData}
               cartData={cartData}
               setCartData={setCartData}
+              notification={notification}
+              setNotification={setNotification}
             />
           </div>
         </>

@@ -11,19 +11,13 @@ const CartInfo = ({ cartName, userName, onDelete }) => {
     navigate(-1); // Go back to the previous page
   };
 
-  const handleDelete = () => {
-    if (window.confirm("Are you sure you want to delete this cart?")) {
-      onDelete(); // Call the onDelete function passed as a prop
-    }
-  };
-
   return (
     <div className="cart-info">
       <div className="cart-header">
         <button className="back-button" onClick={handleBack}>
           Back
         </button>
-        <button className="delete-button" onClick={handleDelete}>
+        <button className="delete-button" onClick={onDelete}>
           Delete Cart
         </button>
       </div>

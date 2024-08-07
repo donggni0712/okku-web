@@ -11,10 +11,16 @@ import { deletePicks } from "../../api/deletePicks";
 import { getPicks } from "../../api/getPicks";
 import Notification from "../popup/Notification";
 
-const PickWithoutCart = ({ pickData, setPickData, cartData, setCartData }) => {
+const PickWithoutCart = ({
+  pickData,
+  setPickData,
+  cartData,
+  setCartData,
+  notification,
+  setNotification,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [selectedPicks, setSelectedPicks] = useState([]);
-  const [notification, setNotification] = useState(null);
   const { showPopup, hidePopup } = usePopup();
 
   const showAddPickPopup = () => {
@@ -166,12 +172,6 @@ const PickWithoutCart = ({ pickData, setPickData, cartData, setCartData }) => {
             <button onClick={handleDelete}>픽 삭제</button>
             <button onClick={handleCompare}>옷 비교</button>
           </div>
-        )}
-        {notification && (
-          <Notification
-            message={notification}
-            onClose={() => setNotification(null)}
-          />
         )}
       </div>
     </div>

@@ -5,10 +5,11 @@ import { PopupProvider } from "./context/PopupContext";
 import Main from "./pages/main";
 import CartPage from "./pages/cartPage";
 import { setTokens } from "./service/authService";
+import Notification from "./components/popup/Notification";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [notification, setNotification] = useState(null);
   useEffect(() => {
     // 카카오 로그인 여부 확인
     if (window.Kakao.Auth.getAccessToken()) {
@@ -36,6 +37,8 @@ const App = () => {
               <Main
                 handleLoginSuccess={handleLoginSuccess}
                 isLoggedIn={isLoggedIn}
+                notification={notification}
+                setNotification={setNotification}
               />
             }
           />
@@ -45,11 +48,19 @@ const App = () => {
               <CartPage
                 handleLoginSuccess={handleLoginSuccess}
                 isLoggedIn={isLoggedIn}
+                notification={notification}
+                setNotification={setNotification}
               />
             }
           />
         </Routes>
       </PopupProvider>
+      {notification && (
+        <Notification
+          message={notification}
+          onClose={() => setNotification(null)}
+        />
+      )}
     </Router>
   );
 };

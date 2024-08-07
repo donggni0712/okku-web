@@ -17,10 +17,10 @@ const PickWithCart = ({
   cartData,
   setCartData,
   cartId,
+  setNotification,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [selectedPicks, setSelectedPicks] = useState([]);
-  const [notification, setNotification] = useState(null);
   const { showPopup, hidePopup } = usePopup();
 
   const showAddPickPopup = () => {
@@ -171,12 +171,6 @@ const PickWithCart = ({
             <button onClick={handledelete}>픽 삭제</button>
             <button onClick={handleCompare}>옷 비교</button>
           </div>
-        )}
-        {notification && (
-          <Notification
-            message={notification}
-            onClose={() => setNotification(null)}
-          />
         )}
       </div>
     </div>

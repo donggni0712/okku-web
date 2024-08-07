@@ -11,8 +11,9 @@ import CartInfo from "../components/cartInfo/CartInfo";
 import PickWithCart from "../components/picksWithCart/PickWithCart";
 import { getPicks } from "../api/getPicks";
 import useGetPicks from "../hooks/userGetPick";
+import { deleteCart } from "../api/deleteCart";
 
-const CartPage = ({ isLoggedIn, handleLoginSuccess }) => {
+const CartPage = ({ isLoggedIn, handleLoginSuccess, setNotification }) => {
   const [cartData, setCartData] = useState();
   const { cartId } = useParams();
   const [pickData, setPickData] = useState();
@@ -23,8 +24,15 @@ const CartPage = ({ isLoggedIn, handleLoginSuccess }) => {
       "central",
       <CentralPopup
         message="카트를 삭제하시겠습니까?"
-        button1={{ text: "예", onClick: () => alert("예 클릭됨") }}
-        button2={{ text: "아니오", onClick: () => alert("아니오 클릭됨") }}
+        button1={{
+          text: "예",
+          onClick: async () => {
+            await deleteCart(cartId);
+            setNotification("카트를 삭제했습니다.");
+            hidePopup();
+          },
+        }}
+        button2={{ text: "아니오", onClick: hidePopup }}
       />
     );
     console.log("Cart deleted");
@@ -39,6 +47,7 @@ const CartPage = ({ isLoggedIn, handleLoginSuccess }) => {
             cartName={pickData ? pickData.cart.name : "로딩중"}
             userName={pickData ? pickData.cart.host.name : "로딩중"}
             onDelete={handleDeleteCart}
+            setNotification={setNotification}
           />
           <div className="app-body">
             <PickWithCart
@@ -47,6 +56,7 @@ const CartPage = ({ isLoggedIn, handleLoginSuccess }) => {
               cartId={cartId}
               cartData={cartData}
               setCartData={setCartData}
+              setNotification={setNotification}
             />
           </div>
         </div>
