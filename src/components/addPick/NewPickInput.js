@@ -2,13 +2,17 @@
 import React, { useState } from "react";
 import "./newPickInput.css"; // Import the CSS file for styling
 import { addPick } from "../../api/addPick";
+import { movePick } from "../../api/movePick";
 
-const NewPickInput = ({ onBack, callBackOnSave, pickIds }) => {
+const NewPickInput = ({ onBack, callBackOnSave, cartId }) => {
   const [pickUrl, setPickUrl] = useState("");
 
   const handleSave = async () => {
     const pick = await addPick(pickUrl);
-    console.log("pick!", pick);
+    if (cartId && cartId != "") {
+      console.log("move", cartId);
+      await movePick([pick.id], "", cartId, false);
+    }
     callBackOnSave(pick);
   };
 

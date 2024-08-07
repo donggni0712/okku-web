@@ -29,7 +29,7 @@ const PickWithCart = ({
       <NewPickInput
         onBack={hidePopup}
         callBackOnSave={callBackAddCart}
-        pickIds={[]}
+        cartId={cartId}
       />
     );
   };
@@ -72,6 +72,7 @@ const PickWithCart = ({
             const picks = await getPicks();
             setCartData(carts);
             setPickData(picks);
+            setIsEditing(false);
             setSelectedPicks([]);
             setNotification("픽이 삭제되었습니다.");
             hidePopup();
@@ -83,7 +84,6 @@ const PickWithCart = ({
   };
 
   const showCartPopup = () => {
-    console.log("ddd", cartData);
     showPopup(
       "bottom",
       <Carts
@@ -118,6 +118,7 @@ const PickWithCart = ({
             );
             const carts = await getCarts();
             setCartData(carts);
+            setIsEditing(false);
             setSelectedPicks([]);
             setNotification("픽이 카트에 담겼습니다.");
             hidePopup();
@@ -150,31 +151,34 @@ const PickWithCart = ({
             옷 추가
           </button>
           <button className="edit-button" onClick={handleEditToggle}>
-            {isEditing ? "취소" : "편집"}
+            {isEditing ? "취소" : "선택"}
           </button>
         </div>
       </div>
-      <Picks
-        pickData={pickData}
-        setPickData={setPickData}
-        cartId={cartId}
-        isEditing={isEditing}
-        selectedPicks={selectedPicks}
-        togglePickSelection={togglePickSelection}
-      />
-      {isEditing && (
-        <div className="edit-popup-button">
-          <button onClick={showCartPopup}>픽 이동</button>
-          <button onClick={handledelete}>픽 삭제</button>
-          <button onClick={handleCompare}>옷 비교</button>
-        </div>
-      )}
-      {notification && (
-        <Notification
-          message={notification}
-          onClose={() => setNotification(null)}
+      {isEditing && <div className="overlay"></div>}
+      <div className={`about-picks`}>
+        <Picks
+          pickData={pickData}
+          setPickData={setPickData}
+          cartId={cartId}
+          isEditing={isEditing}
+          selectedPicks={selectedPicks}
+          togglePickSelection={togglePickSelection}
         />
-      )}
+        {isEditing && (
+          <div className="edit-popup-button">
+            <button onClick={showCartPopup}>픽 이동</button>
+            <button onClick={handledelete}>픽 삭제</button>
+            <button onClick={handleCompare}>옷 비교</button>
+          </div>
+        )}
+        {notification && (
+          <Notification
+            message={notification}
+            onClose={() => setNotification(null)}
+          />
+        )}
+      </div>
     </div>
   );
 };

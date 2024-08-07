@@ -12,7 +12,7 @@ const Picks = ({
   togglePickSelection,
 }) => {
   const { getPickLoading, getPickError } = useGetPicks(setPickData, cartId);
-  console.log("asddddd", pickData);
+
   if (getPickLoading) {
     return <div>Loading...</div>;
   }

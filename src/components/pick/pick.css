@@ -1,13 +1,17 @@
 .pick {
   border: 1px solid #ccc;
   padding: 10px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
-.pick.selected .pick-image-container {
-  position: relative; /* Positioning context for pseudo-element */
-}
+
 .pick.selected {
   background: #c8f1db;
 }
+
+.pick.selected .pick-image-container {
+  position: relative; /* Positioning context for pseudo-element */
+}
+
 .pick.selected .pick-image-container::before {
   content: "";
   position: absolute;
@@ -15,28 +19,16 @@
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #23b169;
   box-shadow: inset 0 0 0 2px rgba(35, 177, 105, 0.5); /* Inset shadow to create an inner border effect */
   pointer-events: none; /* Ensure the shadow does not interfere with user interaction */
   z-index: 10; /* Make sure the shadow appears above other content */
 }
-.checkmark {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #23b169;
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .edit-popup-button {
   margin-top: 20px;
   text-align: center;
 }
+
 .edit-popup-button button {
   padding: 10px 20px;
   background-color: #23b169;
@@ -49,11 +41,13 @@
 .edit-popup-button button:hover {
   background-color: #1c8c53;
 }
+
 .pick-image-container {
   position: relative;
   width: 100%;
   padding-bottom: 100%; /* Create a square by setting height relative to width */
   overflow: hidden;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .pick-image {

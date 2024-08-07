@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getCarts } from "../api/getCarts";
 
-const useGetCarts = (setCartData, page = 1, size = 10) => {
+const useGetCarts = (setCartData, page = 1, size = 30) => {
   const [getCartData, setGetCartData] = useState([]);
   const [getCartLoading, setLoading] = useState(true);
   const [getCartError, setError] = useState(null);
