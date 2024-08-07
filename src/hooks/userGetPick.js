@@ -10,7 +10,7 @@ const useGetPicks = (setPickData, cartId = null, page = 1, size = 30) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getPicks(page, size, cartId);
+        const data = await getPicks(cartId, page, size);
         console.log(data);
         console.log(data.picks);
         setGetPickData(data);

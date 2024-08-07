@@ -1,6 +1,6 @@
 // src/components/Main.js
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useParams } from "react-router-dom";
+import { Routes, Route, useParams, useNavigate } from "react-router-dom";
 import { usePopup } from "../context/PopupContext";
 import CentralPopup from "../components/popup/CentralPopup";
 import BottomPopup from "../components/popup/BottomPopup";
@@ -14,11 +14,14 @@ import useGetPicks from "../hooks/userGetPick";
 import { deleteCart } from "../api/deleteCart";
 
 const CartPage = ({ isLoggedIn, handleLoginSuccess, setNotification }) => {
+  const navigate = useNavigate();
   const [cartData, setCartData] = useState();
   const { cartId } = useParams();
   const [pickData, setPickData] = useState();
   const { showPopup, hidePopup } = usePopup();
 
+  console.log("a");
+  console.log(pickData);
   const handleDeleteCart = () => {
     showPopup(
       "central",
@@ -30,6 +33,7 @@ const CartPage = ({ isLoggedIn, handleLoginSuccess, setNotification }) => {
             await deleteCart(cartId);
             setNotification("카트를 삭제했습니다.");
             hidePopup();
+            navigate(-1);
           },
         }}
         button2={{ text: "아니오", onClick: hidePopup }}
@@ -37,8 +41,6 @@ const CartPage = ({ isLoggedIn, handleLoginSuccess, setNotification }) => {
     );
     console.log("Cart deleted");
   };
-  console.log("a");
-  console.log(pickData);
   return (
     <div className="App">
       {isLoggedIn ? (
@@ -46,8 +48,7 @@ const CartPage = ({ isLoggedIn, handleLoginSuccess, setNotification }) => {
           <CartInfo
             cartName={pickData ? pickData.cart.name : "로딩중"}
             userName={pickData ? pickData.cart.host.name : "로딩중"}
-            onDelete={handleDeleteCart}
-            setNotification={setNotification}
+            handleDeleteCart={handleDeleteCart}
           />
           <div className="app-body">
             <PickWithCart

@@ -59,17 +59,17 @@ const PickWithCart = ({
     showPopup(
       "central",
       <CentralPopup
-        message="삭제하시겠습니까?"
+        message="옷을 카트에서 삭제하시겠습니까? 전체 목록에선느 옷이 유지됩니다."
         button1={{
           text: "예",
           onClick: async () => {
             await deletePicks(
               selectedPicks.map((el) => el.id),
-              "",
-              true
+              cartId,
+              false
             );
             const carts = await getCarts();
-            const picks = await getPicks();
+            const picks = await getPicks(cartId);
             setCartData(carts);
             setPickData(picks);
             setIsEditing(false);

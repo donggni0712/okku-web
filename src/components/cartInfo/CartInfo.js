@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import "./cartinfo.css";
 
-const CartInfo = ({ cartName, userName, onDelete }) => {
+const CartInfo = ({ cartName, userName, handleDeleteCart }) => {
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -17,7 +17,7 @@ const CartInfo = ({ cartName, userName, onDelete }) => {
         <button className="back-button" onClick={handleBack}>
           Back
         </button>
-        <button className="delete-button" onClick={onDelete}>
+        <button className="delete-button" onClick={handleDeleteCart}>
           Delete Cart
         </button>
       </div>
