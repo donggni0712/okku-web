@@ -13,6 +13,7 @@ import { getPicks } from "../api/getPicks";
 import useGetPicks from "../hooks/userGetPick";
 
 const CartPage = ({ isLoggedIn, handleLoginSuccess }) => {
+  const [cartData, setCartData] = useState();
   const { cartId } = useParams();
   const [pickData, setPickData] = useState();
   const { showPopup, hidePopup } = usePopup();
@@ -44,6 +45,8 @@ const CartPage = ({ isLoggedIn, handleLoginSuccess }) => {
               pickData={pickData}
               setPickData={setPickData}
               cartId={cartId}
+              cartData={cartData}
+              setCartData={setCartData}
             />
           </div>
         </div>

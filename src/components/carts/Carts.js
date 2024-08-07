@@ -41,7 +41,6 @@ const Carts = ({ cartData, setCartData, isPopup = false, handleClick }) => {
   };
 
   const handleAddCart = () => {
-    console.log(isPopup);
     if (isPopup) {
       showPopup(
         "bottom",

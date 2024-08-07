@@ -34,9 +34,15 @@ const PickWithCart = ({
     );
   };
 
+  const showChooseAdd = () => {
+    showPopup("bottom", <div></div>);
+  };
+
   const callBackAddCart = (pick) => {
-    const updatedPicks = [pick, ...pickData.picks];
-    setPickData(updatedPicks);
+    let tempPickData = pickData;
+    tempPickData.picks = [pick, ...pickData.picks];
+
+    setPickData(tempPickData);
     setNotification("옷을 Pick! 했습니다.");
     hidePopup();
   };
@@ -77,6 +83,7 @@ const PickWithCart = ({
   };
 
   const showCartPopup = () => {
+    console.log("ddd", cartData);
     showPopup(
       "bottom",
       <Carts
@@ -136,7 +143,7 @@ const PickWithCart = ({
     <div className="picks-wrapper">
       <div className="header">
         <div className="header-left">
-          <p>특정 문구</p>
+          <p>내 픽</p>
         </div>
         <div className="header-right">
           <button className="add-button" onClick={showAddPickPopup}>

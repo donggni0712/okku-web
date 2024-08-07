@@ -29,8 +29,10 @@ const PickWithoutCart = ({ pickData, setPickData, cartData, setCartData }) => {
   };
 
   const callBackAddCart = (pick) => {
-    const updatedPicks = [pick, ...pickData];
-    setPickData(updatedPicks);
+    let tempPickData = pickData;
+    tempPickData.picks = [pick, ...pickData.picks];
+
+    setPickData(tempPickData);
     setNotification("옷을 Pick! 했습니다.");
     hidePopup();
   };

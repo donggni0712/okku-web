@@ -8,7 +8,7 @@ const NewPickInput = ({ onBack, callBackOnSave, pickIds }) => {
 
   const handleSave = async () => {
     const pick = await addPick(pickUrl);
-    console.log(pick);
+    console.log("pick!", pick);
     callBackOnSave(pick);
   };
 
