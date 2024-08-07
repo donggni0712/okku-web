@@ -1,8 +1,9 @@
 import axios from "axios";
+import api from "./api";
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const getUserInfo = async (name, height, weight, form) => {
   try {
-    const response = await axios.patch(`${API_BASE_URL}/users`, {
+    const response = await api.patch(`/users`, {
       name: name,
       height: height,
       weight: weight,

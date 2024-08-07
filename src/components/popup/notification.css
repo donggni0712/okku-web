@@ -1,0 +1,24 @@
+/* src/components/Notification.css */
+.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 1em 2em;
+  border-radius: 10px;
+  z-index: 1000;
+  text-align: center;
+  font-size: 1.2em;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}

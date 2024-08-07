@@ -1,8 +1,9 @@
 import axios from "axios";
+import api from "./api";
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const createCart = async (name, pickIds) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/carts`, {
+    const response = await api.post(`/carts`, {
       name: name,
       pickIds: pickIds,
     });

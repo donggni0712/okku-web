@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getCarts } from "../api/getCarts";
 
-const useGetCarts = (setCartData, page = 1, size = 10) => {
+const useGetCarts = (setCartData, page = 1, size = 30) => {
   const [getCartData, setGetCartData] = useState([]);
   const [getCartLoading, setLoading] = useState(true);
   const [getCartError, setError] = useState(null);
@@ -12,7 +12,7 @@ const useGetCarts = (setCartData, page = 1, size = 10) => {
         const data = await getCarts(page, size);
         setGetCartData(data);
         if (setCartData) {
-          setCartData(data.carts); // Assuming `data.carts` is the actual cart data
+          setCartData(data); // Assuming `data.carts` is the actual cart data
         }
       } catch (error) {
         setError(error);

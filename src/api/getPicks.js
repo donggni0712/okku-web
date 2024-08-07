@@ -1,10 +1,13 @@
 import axios from "axios";
+import api from "./api";
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-const getPicks = async (page = 1, size = 10) => {
+const getPicks = async (cartId = null, page = 1, size = 30) => {
   try {
-    const response = await axios.get(
-      `${API_BASE_URL}/picks?page=${page}&size=${size}`
-    );
+    let url = `/picks?page=${page}&size=${size}`;
+    if (cartId) {
+      url = url + `&cartId=${cartId}`;
+    }
+    const response = await api.get(url);
     return response.data;
   } catch (error) {
     console.error("Error fetching picks:", error);

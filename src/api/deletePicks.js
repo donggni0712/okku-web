@@ -1,8 +1,9 @@
 import axios from "axios";
+import api from "./api";
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const deletePicks = async (pickIds, cartId, isDeletePermenant) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/picks/delete`, {
+    const response = await api.post(`/picks/delete`, {
       pickIds: pickIds,
       cartId: cartId,
       isDeletePermenant: isDeletePermenant,
