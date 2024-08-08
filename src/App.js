@@ -6,6 +6,8 @@ import Main from "./pages/main";
 import CartPage from "./pages/cartPage";
 import { setTokens } from "./service/authService";
 import Notification from "./components/popup/Notification";
+import PickPage from "./pages/pickPage";
+import PickPageWithoutLogin from "./pages/pickPageWithoutLogin";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -46,6 +48,28 @@ const App = () => {
             path="/cart/:cartId"
             element={
               <CartPage
+                handleLoginSuccess={handleLoginSuccess}
+                isLoggedIn={isLoggedIn}
+                notification={notification}
+                setNotification={setNotification}
+              />
+            }
+          />
+          <Route
+            path="/pick/:pickId"
+            element={
+              <PickPage
+                handleLoginSuccess={handleLoginSuccess}
+                isLoggedIn={isLoggedIn}
+                notification={notification}
+                setNotification={setNotification}
+              />
+            }
+          />
+          <Route
+            path="/demo/:pickId"
+            element={
+              <PickPageWithoutLogin
                 handleLoginSuccess={handleLoginSuccess}
                 isLoggedIn={isLoggedIn}
                 notification={notification}

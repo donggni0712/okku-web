@@ -9,7 +9,6 @@ import { movePick } from "../../api/movePick";
 import { getCarts } from "../../api/getCarts";
 import { deletePicks } from "../../api/deletePicks";
 import { getPicks } from "../../api/getPicks";
-import Notification from "../popup/Notification";
 
 const PickWithoutCart = ({
   pickData,

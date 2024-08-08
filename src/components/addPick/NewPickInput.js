@@ -8,11 +8,13 @@ const NewPickInput = ({ onBack, callBackOnSave, cartId }) => {
   const [pickUrl, setPickUrl] = useState("");
 
   const handleSave = async () => {
+    console.log("call");
     const pick = await addPick(pickUrl);
     if (cartId && cartId != "") {
       console.log("move", cartId);
       await movePick([pick.id], "", cartId, false);
     }
+    console.log(pick);
     callBackOnSave(pick);
   };
 
