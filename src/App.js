@@ -65,17 +65,6 @@ const App = () => {
               />
             }
           />
-          <Route
-            path="/demo"
-            element={
-              <PickPageWithoutLogin
-                handleLoginSuccess={handleLoginSuccess}
-                isLoggedIn={isLoggedIn}
-                notification={notification}
-                setNotification={setNotification}
-              />
-            }
-          />
         </Routes>
       </PopupProvider>
       {notification && (
