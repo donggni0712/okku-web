@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./landingPage.css";
-import KakaoLoginButton from "../components/login/kakaologinbutton";
+import KakaoLoginButton from "./login/kakaologinbutton";
 import { useNavigate } from "react-router-dom";
 import { usePopup } from "../context/PopupContext";
-import ErrorPopup from "../components/popup/ErrorPopup";
+import ErrorPopup from "./popup/ErrorPopup";
 import { getReviewsWithoutLogin } from "../api/getReviewsWithoutLogin";
-import PickPageWithoutLogin from "./pickPageWithoutLogin";
+import PickPageWithoutLogin from "../pages/pickPageWithoutLogin";
 
 const LandingPage = ({ onLoginSuccess }) => {
   const [animatedText, setAnimatedText] = useState(["", ""]);
