@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Carts from "../components/carts/Carts";
 import PickWithoutCart from "../components/picksWithCart/PickWithoutCartComponent";
-import LandingPage from "./landingPage";
+import LandingPage from "./landingpage";
 
 const Main = ({
   handleLoginSuccess,
@@ -15,9 +15,7 @@ const Main = ({
   const [pickData, setPickData] = useState();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log("cartData changed: ", cartData);
-  }, [cartData]);
+  useEffect(() => {}, [cartData]);
 
   const handleClickToCartMove = (cartId) => {
     navigate(`/cart/${cartId}`); // Change URL to /cart

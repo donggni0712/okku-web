@@ -9,6 +9,7 @@ import { movePick } from "../../api/movePick";
 import { getCarts } from "../../api/getCarts";
 import { deletePicks } from "../../api/deletePicks";
 import { getPicks } from "../../api/getPicks";
+import ErrorPopup from "../popup/ErrorPopup";
 
 const PickWithoutCart = ({
   pickData,
@@ -92,7 +93,6 @@ const PickWithoutCart = ({
   };
 
   const showAddPickToCartPopup = async (cartId) => {
-    console.log("2 ", cartId);
     showPopup(
       "central",
       <CentralPopup
@@ -100,32 +100,39 @@ const PickWithoutCart = ({
         button1={{
           text: "예",
           onClick: async () => {
-            await movePick(
-              selectedPicks.map((el) => el.id),
-              "",
-              cartId,
-              false
-            );
-            const carts = await getCarts();
-            setCartData(carts);
-            setIsEditing(false);
-            setSelectedPicks([]);
-            setNotification("픽이 카트에 담겼습니다.");
-            hidePopup();
+            try {
+              await movePick(
+                selectedPicks.map((el) => el.id),
+                "",
+                cartId,
+                false
+              );
+              const carts = await getCarts();
+              setCartData(carts);
+              setIsEditing(false);
+              setSelectedPicks([]);
+              setNotification("픽이 카트에 담겼습니다.");
+              hidePopup();
+            } catch (error) {
+              hidePopup(); // 기존 팝업 닫기
+
+              if (error.response && error.response.status === 400) {
+                showPopup(
+                  "error",
+                  <ErrorPopup
+                    title="중복된 픽"
+                    message="이미 카트에 담겨있는 픽입니다."
+                    onClick={hidePopup}
+                  />
+                );
+              } else {
+                console.error("Error adding pick to cart:", error);
+                setNotification("카트에 픽을 담는 중 문제가 발생했습니다.");
+              }
+            }
           },
         }}
         button2={{ text: "아니오", onClick: hidePopup }}
-      />
-    );
-  };
-
-  const handleCompare = () => {
-    showPopup(
-      "central",
-      <CentralPopup
-        message="비교 뷰 미완"
-        button1={{ text: "예", onClick: () => alert("예 클릭됨") }}
-        button2={{ text: "아니오", onClick: () => alert("아니오 클릭됨") }}
       />
     );
   };
@@ -143,7 +150,7 @@ const PickWithoutCart = ({
     <div className="picks-wrapper">
       <div className="header">
         <div className="header-left">
-          <p>특정 문구</p>
+          <p>전체 픽</p>
         </div>
         <div className="header-right">
           <button className="add-button" onClick={showAddPickPopup}>
@@ -170,7 +177,6 @@ const PickWithoutCart = ({
           <div className="edit-popup-button">
             <button onClick={showCartPopup}>픽 이동</button>
             <button onClick={handleDelete}>픽 삭제</button>
-            <button onClick={handleCompare}>옷 비교</button>
           </div>
         )}
       </div>

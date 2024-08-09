@@ -21,8 +21,6 @@ const KakaoLoginButton = ({ onLoginSuccess }) => {
             token: authObj.access_token,
           })
         ).data;
-        console.log("refresh");
-        console.log(tokens);
         onLoginSuccess(tokens);
       },
       fail: function (err) {

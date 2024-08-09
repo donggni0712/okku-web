@@ -15,11 +15,9 @@ const CartInfo = ({ cartName, userName, handleDeleteCart }) => {
     <div className="cart-info">
       <div className="cart-header">
         <button className="back-button" onClick={handleBack}>
-          Back
+          &lt;
         </button>
-        <button className="delete-button" onClick={handleDeleteCart}>
-          Delete Cart
-        </button>
+        <button className="delete-button" onClick={handleDeleteCart}></button>
       </div>
       <div className="cart-details">
         <h2 className="cart-name">{cartName}</h2>

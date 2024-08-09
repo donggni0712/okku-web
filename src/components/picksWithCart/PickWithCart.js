@@ -10,6 +10,7 @@ import { getCarts } from "../../api/getCarts";
 import { deletePicks } from "../../api/deletePicks";
 import { getPicks } from "../../api/getPicks";
 import Notification from "../popup/Notification";
+import ErrorPopup from "../popup/ErrorPopup";
 
 const PickWithCart = ({
   pickData,
@@ -85,7 +86,8 @@ const PickWithCart = ({
   };
 
   const showCartPopup = async () => {
-    const tempCart = await getCarts();
+    let tempCart = await getCarts();
+    tempCart.carts = tempCart.carts.filter((cart) => cart.id !== cartId);
     setCartData(tempCart);
     showPopup(
       "bottom",
@@ -116,50 +118,63 @@ const PickWithCart = ({
         button1={{
           text: "여기도 남길게요",
           onClick: async () => {
-            await movePick(
-              selectedPicks.map((el) => el.id),
-              cartId, // 현재 최상단 카트의 ID
-              clickedCartId,
-              false
-            );
-            const carts = await getCarts();
-            setCartData(carts);
-            setIsEditing(false);
-            setSelectedPicks([]);
-            setNotification("픽이 카트에 담겼습니다.");
-            hidePopup();
+            try {
+              await movePick(
+                selectedPicks.map((el) => el.id),
+                cartId, // 현재 최상단 카트의 ID
+                clickedCartId,
+                false
+              );
+              const carts = await getCarts();
+              setCartData(carts);
+              setIsEditing(false);
+              setSelectedPicks([]);
+              setNotification("픽이 카트에 담겼습니다.");
+              hidePopup();
+            } catch (error) {
+              hidePopup(); // 기존 팝업 닫기
+              showPopup(
+                "error",
+                <ErrorPopup
+                  title="중복된 픽"
+                  message="이미 카트에 담겨있는 픽입니다."
+                  onClick={hidePopup}
+                />
+              );
+            }
           },
         }}
         button2={{
           text: "확인",
           onClick: async () => {
-            await movePick(
-              selectedPicks.map((el) => el.id),
-              cartId, // 현재 최상단 카트의 ID
-              clickedCartId,
-              true
-            );
-            const carts = await getCarts();
-            const picks = await getPicks(cartId);
-            setPickData(picks);
-            setCartData(carts);
-            setIsEditing(false);
-            setSelectedPicks([]);
-            setNotification("픽이 이동되었습니다.");
-            hidePopup();
+            try {
+              await movePick(
+                selectedPicks.map((el) => el.id),
+                cartId, // 현재 최상단 카트의 ID
+                clickedCartId,
+                true
+              );
+              const carts = await getCarts();
+              const picks = await getPicks(cartId);
+              setPickData(picks);
+              setCartData(carts);
+              setIsEditing(false);
+              setSelectedPicks([]);
+              setNotification("픽이 이동되었습니다.");
+              hidePopup();
+            } catch (error) {
+              hidePopup(); // 기존 팝업 닫기
+              showPopup(
+                "error",
+                <ErrorPopup
+                  title="중복된 픽"
+                  message="이미 카트에 담겨있는 픽입니다."
+                  onClick={hidePopup}
+                />
+              );
+            }
           },
         }}
-      />
-    );
-  };
-
-  const handleCompare = () => {
-    showPopup(
-      "central",
-      <CentralPopup
-        message="비교 뷰 미완"
-        button1={{ text: "예", onClick: () => alert("예 클릭됨") }}
-        button2={{ text: "아니오", onClick: () => alert("아니오 클릭됨") }}
       />
     );
   };
@@ -168,7 +183,7 @@ const PickWithCart = ({
     <div className="picks-wrapper">
       <div className="header">
         <div className="header-left">
-          <p>내 픽</p>
+          <p></p>
         </div>
         <div className="header-right">
           <button className="add-button" onClick={showAddPickPopup}>
@@ -193,7 +208,6 @@ const PickWithCart = ({
           <div className="edit-popup-button">
             <button onClick={showCartPopup}>픽 이동</button>
             <button onClick={handledelete}>픽 삭제</button>
-            <button onClick={handleCompare}>옷 비교</button>
           </div>
         )}
       </div>

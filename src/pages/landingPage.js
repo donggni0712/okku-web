@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const LandingPage = ({ onLoginSuccess }) => {
   const [animatedText, setAnimatedText] = useState(["", ""]);
+  const [url, setUrl] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     const textSequence = [
@@ -15,6 +16,31 @@ const LandingPage = ({ onLoginSuccess }) => {
       ["늘의", "밈"],
       ["늘의", ""],
       ["늘", ""],
+      ["", ""],
+      ["리", ""],
+      ["리와", ""],
+      ["리와 쭈", ""],
+      ["리와 쭈", "미"],
+      ["리와 쭈", "미"],
+      ["리와 쭈", ""],
+      ["리와", ""],
+      ["리", ""],
+      ["", ""],
+      ["늘", ""],
+      ["늘의", ""],
+      ["늘의", "밈"],
+      ["늘의", "밈"],
+      ["늘의", ""],
+      ["늘", ""],
+      ["", ""],
+      ["징", ""],
+      ["징어", ""],
+      ["징어", "미"],
+      ["징어", "미기"],
+      ["징어", "미기"],
+      ["징어", "미"],
+      ["징어", ""],
+      ["징", ""],
       ["", ""],
     ];
 
@@ -68,14 +94,14 @@ const LandingPage = ({ onLoginSuccess }) => {
         <button
           className="analyze-button"
           onClick={() => {
-            navigate("/demo/ad");
+            navigate("/demo");
           }}
         >
           상품 분석하기!
         </button>
       </div>
       <div className="login-button">
-        <KakaoLoginButton onLoginSuccess={onLoginSuccess} />
+        <KakaoLoginButton url={url} onLoginSuccess={onLoginSuccess} />
       </div>
       <div className="login-button">
         <a href="https://open.kakao.com/o/g3EpAvFg" className="develop-button">

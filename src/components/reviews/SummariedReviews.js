@@ -1,32 +1,22 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./summariedReviews.css";
 
-const reviewsData = {
-  "주의해야 해요!": [
-    { content: "옷이 클 수도 있어요!", count: 19 },
-    { content: "옷 색이 사진과 달라요!", count: 2 },
-    { content: "옷이 작을 수 있어요!", count: 3 },
-  ],
-  "이런건 좋아요!": [
-    { content: "옷이 잘 맞아요!", count: 15 },
-    { content: "색상이 예뻐요!", count: 10 },
-    { content: "질감이 좋아요!", count: 5 },
-  ],
-};
-
-const SummariedReviews = ({ pickId }) => {
-  const [activeTab, setActiveTab] = useState("주의해야 해요!");
-  const navigate = useNavigate();
+const SummariedReviews = ({ reviewsData }) => {
+  const [activeTab, setActiveTab] = useState("cons");
+  const [expandedReviews, setExpandedReviews] = useState([]); // 배열로 관리
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
+    setExpandedReviews([]); // 탭 변경 시 확장된 리뷰 초기화
   };
 
-  const handleReviewClick = (reviewId) => {
-    navigate(`/pick/${pickId}/reviews/${reviewId}`);
+  const handleReviewClick = (index) => {
+    if (expandedReviews.includes(index)) {
+      setExpandedReviews(expandedReviews.filter((i) => i !== index)); // 이미 열려 있으면 닫기
+    } else {
+      setExpandedReviews([...expandedReviews, index]); // 아니면 열기
+    }
   };
-
   const sortedReviews = reviewsData[activeTab].sort(
     (a, b) => b.count - a.count
   );
@@ -36,18 +26,14 @@ const SummariedReviews = ({ pickId }) => {
       {/* 탭 버튼 */}
       <div className="tab-container">
         <button
-          onClick={() => handleTabClick("주의해야 해요!")}
-          className={`tab-button ${
-            activeTab === "주의해야 해요!" ? "active" : ""
-          }`}
+          onClick={() => handleTabClick("cons")}
+          className={`tab-button ${activeTab === "cons" ? "active" : ""}`}
         >
           주의해야 해요!
         </button>
         <button
-          onClick={() => handleTabClick("이런건 좋아요!")}
-          className={`tab-button ${
-            activeTab === "이런건 좋아요!" ? "active" : ""
-          }`}
+          onClick={() => handleTabClick("pros")}
+          className={`tab-button ${activeTab === "pros" ? "active" : ""}`}
         >
           이런건 좋아요!
         </button>
@@ -56,13 +42,41 @@ const SummariedReviews = ({ pickId }) => {
       {/* 리뷰 목록 */}
       <div className="review-list">
         {sortedReviews.map((review, index) => (
-          <div
-            key={index}
-            className="review-item"
-            onClick={() => handleReviewClick(index + 1)}
-          >
-            <span>{review.content}</span>
-            <span className="review-count">{review.count}명</span>
+          <div key={index}>
+            <div
+              className={`review-item ${
+                expandedReviews.includes(index) ? "open" : ""
+              }`}
+              onClick={() => handleReviewClick(index)}
+              div
+            >
+              <span>{review.content}</span>
+              <span className="review-count">{review.count}명</span>
+            </div>
+            {expandedReviews.includes(index) && (
+              <div className="review-details">
+                {review.comments.map((detail, i) => (
+                  <div key={i} className="detail-item">
+                    <div className="detail-text">
+                      <p className="detail-info">
+                        {detail.name ? `${detail.name} / ` : ""}
+                        {detail.height ? `${detail.height}cm / ` : ""}
+                        {detail.weight ? `${detail.weight}kg` : ""}
+                      </p>
+
+                      <p>{detail.comment}</p>
+                    </div>
+                    {detail.image && (
+                      <img
+                        src={detail.image}
+                        alt="리뷰 이미지"
+                        className="review-image"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>

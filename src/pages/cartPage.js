@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route, useParams, useNavigate } from "react-router-dom";
 import { usePopup } from "../context/PopupContext";
 import CentralPopup from "../components/popup/CentralPopup";
-import BottomPopup from "../components/popup/BottomPopup";
 import KakaoLoginButton from "../components/login/kakaologinbutton";
 import { setTokens } from "../service/authService";
 import PickWithoutCart from "../components/picksWithCart/PickWithoutCartComponent";
@@ -39,7 +38,6 @@ const CartPage = ({ isLoggedIn, handleLoginSuccess, setNotification }) => {
         button2={{ text: "아니오", onClick: hidePopup }}
       />
     );
-    console.log("Cart deleted");
   };
   return (
     <div className="App">

@@ -8,26 +8,19 @@ const NewPickInput = ({ onBack, callBackOnSave, cartId }) => {
   const [pickUrl, setPickUrl] = useState("");
 
   const handleSave = async () => {
-    console.log("call");
     const pick = await addPick(pickUrl);
     if (cartId && cartId != "") {
-      console.log("move", cartId);
       await movePick([pick.id], "", cartId, false);
     }
-    console.log(pick);
+
     callBackOnSave(pick);
   };
 
   return (
     <div className="new-pick-input">
       <div className="header">
-        <button className="back-button">
-          <img
-            src="assets/back-button.png"
-            alt="<"
-            className="back-button-img"
-            onClick={onBack}
-          />
+        <button className="back-button" onClick={onBack}>
+          &lt;
         </button>
         <h2 className="title">추가할 상품을 본 url을 붙여넣으세요!</h2>
         <button className="save-button" onClick={handleSave}>

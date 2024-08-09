@@ -13,8 +13,7 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [notification, setNotification] = useState(null);
   useEffect(() => {
-    // 카카오 로그인 여부 확인
-    if (window.Kakao.Auth.getAccessToken()) {
+    if (window.Kakao.Auth && window.Kakao.Auth.getAccessToken()) {
       setIsLoggedIn(true);
       setTokens(
         window.Kakao.Auth.getAccessToken(),
@@ -67,7 +66,7 @@ const App = () => {
             }
           />
           <Route
-            path="/demo/:pickId"
+            path="/demo"
             element={
               <PickPageWithoutLogin
                 handleLoginSuccess={handleLoginSuccess}

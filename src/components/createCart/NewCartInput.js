@@ -9,7 +9,6 @@ const NewCartInput = ({ onBack, callBackOnSave, pickIds, setCartData }) => {
   const [cartName, setCartName] = useState("");
 
   const handleSave = async () => {
-    console.log("get Call");
     const createdCart = await createCart(cartName, pickIds);
     const tempCarts = await getCarts();
     setCartData(tempCarts);
