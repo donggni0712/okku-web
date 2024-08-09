@@ -6,13 +6,14 @@ import Main from "./pages/main";
 import CartPage from "./pages/cartPage";
 import { setTokens } from "./service/authService";
 import Notification from "./components/popup/Notification";
+import PickPage from "./pages/pickPage";
+import PickPageWithoutLogin from "./pages/pickPageWithoutLogin";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [notification, setNotification] = useState(null);
   useEffect(() => {
-    // 카카오 로그인 여부 확인
-    if (window.Kakao.Auth.getAccessToken()) {
+    if (window.Kakao.Auth && window.Kakao.Auth.getAccessToken()) {
       setIsLoggedIn(true);
       setTokens(
         window.Kakao.Auth.getAccessToken(),
@@ -46,6 +47,17 @@ const App = () => {
             path="/cart/:cartId"
             element={
               <CartPage
+                handleLoginSuccess={handleLoginSuccess}
+                isLoggedIn={isLoggedIn}
+                notification={notification}
+                setNotification={setNotification}
+              />
+            }
+          />
+          <Route
+            path="/pick/:pickId"
+            element={
+              <PickPage
                 handleLoginSuccess={handleLoginSuccess}
                 isLoggedIn={isLoggedIn}
                 notification={notification}

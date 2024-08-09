@@ -6,10 +6,12 @@ import useGetCarts from "../../hooks/userGetCart";
 import { usePopup } from "../../context/PopupContext";
 import NewCartInput from "../createCart/NewCartInput";
 import { getCarts } from "../../api/getCarts";
+import { useNavigate } from "react-router-dom";
 
 const Carts = ({ cartData, setCartData, isPopup = false, handleClick }) => {
   const { getCartLoading, getCartErro } = useGetCarts(setCartData);
   const { showPopup, hidePopup } = usePopup();
+  const navigate = useNavigate();
   if (getCartLoading) {
     return <div>Loading...</div>;
   }
@@ -39,6 +41,10 @@ const Carts = ({ cartData, setCartData, isPopup = false, handleClick }) => {
         handleClick={handleClick}
       />
     );
+  };
+
+  const goHome = () => {
+    navigate("/");
   };
 
   const handleAddCart = () => {
@@ -74,7 +80,7 @@ const Carts = ({ cartData, setCartData, isPopup = false, handleClick }) => {
   return (
     <div className="carts-container">
       <div className="carts">
-        <Cart {...allViewCart} />
+        <Cart {...allViewCart} handleClick={goHome} />
         {cartData.carts.map((cart, index) => (
           <Cart
             cartId={cart.id}

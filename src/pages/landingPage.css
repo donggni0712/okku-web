@@ -1,0 +1,257 @@
+.app-container {
+  padding: 20px;
+  padding-top: 30px; /* 화면 맨 위에 패딩 추가 */
+  text-align: center;
+  background-color: #f5f5f5;
+  font-family: "Noto Sans", sans-serif;
+}
+
+/* 상단 텍스트 스타일 */
+.header-text {
+  color: #888;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+/* 부모 컨테이너를 중앙에 배치 */
+.logo-title-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 4em;
+  padding-left: 6em;
+}
+
+/* 로고와 타이틀 컨테이너 */
+.logo-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* 로고와 텍스트를 왼쪽 정렬 */
+  max-width: 400px; /* 적절한 크기로 컨테이너의 최대 폭을 설정 */
+  width: 100%; /* 컨테이너 전체 폭을 차지 */
+}
+
+/* 로고 이미지 스타일 */
+.logo-image {
+  height: 50px; /* 로고의 높이를 설정 */
+  margin-right: 15px; /* 로고와 텍스트 사이에 간격 추가 */
+}
+
+/* 타이틀 텍스트 스타일 */
+.title-text {
+  font-size: 1.8em;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1; /* 로고 옆의 텍스트가 남은 공간을 차지하게 설정 */
+}
+.title-text p {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+}
+
+.highlight {
+  color: #28a745; /* 초록색 */
+  margin-right: 5px; /* "오"와 "꾸" 뒤에 약간의 간격을 추가 */
+}
+
+/* 파트너사 로고 스크롤 스타일 */
+.partners-container {
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 20px;
+}
+
+.scrolling-logos {
+  display: inline-block;
+  animation: scroll-left 20s linear infinite;
+}
+
+.scrolling-logos img {
+  height: 40px;
+  margin: 0 15px;
+  vertical-align: middle;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* URL 입력 및 분석 버튼 스타일 */
+.url-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.url-input {
+  flex: 1;
+  max-width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.analyze-button {
+  padding: 10px 20px;
+  background-color: #26a762;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.analyze-button:hover {
+  background-color: #1c8c53;
+}
+
+/* 서비스 소개 섹션 스타일 */
+.service-intro {
+  margin-top: 100px;
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.intro-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.intro-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.intro-image {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 10px;
+}
+
+.intro-text {
+  flex: 1;
+  text-align: left;
+  font-size: 1em;
+  color: #333;
+  margin: 0;
+}
+
+/* 의견 제시하기 버튼 스타일 */
+.develop-button {
+  background-color: #303d4c; /* 피드백 버튼 배경색 */
+  color: #fff; /* 텍스트 색상 */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  margin-right: 1em;
+}
+
+.develop-button:hover {
+  background-color: #676d74; /* 버튼에 마우스를 올렸을 때 색상 변화 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.develop-button:active {
+  background-color: #2c6bb4; /* 버튼 클릭 시 색상 변화 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 이미지와 텍스트 사이의 간격 */
+.develop-button img {
+  height: 16px;
+  margin-right: 10px; /* 이미지와 텍스트 사이의 간격 */
+}
+.bug-button {
+  background-color: #ef4452; /* 피드백 버튼 배경색 */
+  color: #fff; /* 텍스트 색상 */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  margin-left: 1em;
+}
+
+.bug-button:hover {
+  background-color: #8c212a; /* 버튼에 마우스를 올렸을 때 색상 변화 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.bug-button:active {
+  background-color: #2c6bb4; /* 버튼 클릭 시 색상 변화 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 이미지와 텍스트 사이의 간격 */
+.bug-button img {
+  height: 16px;
+  margin-right: 10px; /* 이미지와 텍스트 사이의 간격 */
+}
+.shopping-button {
+  background-color: #fbb3b9; /* 피드백 버튼 배경색 */
+  color: #000; /* 텍스트 색상 */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.shopping-button:hover {
+  background-color: #e17f87; /* 버튼에 마우스를 올렸을 때 색상 변화 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.shopping-button:active {
+  background-color: #2c6bb4; /* 버튼 클릭 시 색상 변화 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 이미지와 텍스트 사이의 간격 */
+.shopping-button img {
+  height: 16px;
+  margin-right: 10px; /* 이미지와 텍스트 사이의 간격 */
+}

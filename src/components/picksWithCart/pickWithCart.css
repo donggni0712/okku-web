@@ -46,7 +46,17 @@
 .edit-button {
   z-index: 510;
 }
-
+.edit-popup-button {
+  position: fixed; /* Fixed positioning */
+  bottom: 0; /* Align to the bottom of the viewport */
+  left: 0; /* Align to the left of the viewport */
+  right: 0; /* Stretch to the right of the viewport */
+  padding: 10px; /* Space around buttons */
+  display: flex; /* Align buttons horizontally */
+  justify-content: center; /* Center buttons */
+  gap: 10px; /* Space between buttons */
+  z-index: 510; /* Ensure it appears above other content */
+}
 .add-button:hover,
 .edit-button:hover {
   background-color: #1c8c53;
