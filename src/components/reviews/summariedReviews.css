@@ -1,0 +1,128 @@
+/* Tab buttons styling */
+.tab-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  outline: none;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.tab-button.active {
+  background-color: #ddd;
+}
+
+/* Review list styling */
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 3000px;
+}
+
+.review-item {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s, transform 0.3s;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+
+.review-item:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.02);
+}
+
+.review-count {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Review details for dropdown */
+.review-details {
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-top: 1px solid #eee;
+  margin-top: 10px;
+}
+
+.review-item.open .review-details {
+  max-height: none;
+  display: block;
+  max-height: auto; /* 이 값을 더 크게 조정하거나 'auto'로 변경할 수 있습니다. */
+  padding: 10px;
+}
+
+.detail-item {
+  display: flex; /* Flexbox로 이미지와 텍스트를 나란히 배치 */
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd; /* 바닥에 선 추가 */
+  padding-bottom: 10px; /* 텍스트와 선 사이의 간격 조정 */
+  margin-bottom: 10px; /* 아이템 간 간격 추가 */
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-text {
+  flex: 1;
+}
+
+.detail-item p {
+  margin: 5px 0;
+}
+
+.detail-info {
+  font-size: 0.8em;
+  color: #666;
+}
+
+.review-image {
+  max-width: auto;
+  height: 60px;
+  margin-left: 20px;
+  border-radius: 5px;
+}
+
+.review-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.review-text {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.review-image-container {
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+
+.review-details {
+  max-height: none; /* 또는 'auto' */
+  overflow: hidden;
+  transition: padding 0.3s ease-out; /* max-height 애니메이션은 제거 */
+}
+
+.review-item.open .review-details {
+  max-height: none; /* 이 값을 사용하면 높이에 제한이 없게 됩니다 */
+  padding: 10px;
+}

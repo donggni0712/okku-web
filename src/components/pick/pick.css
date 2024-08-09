@@ -1,7 +1,8 @@
 .pick {
   border: 1px solid #ccc;
   padding: 10px;
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  box-sizing: border-box;
+  width: 10em;
 }
 
 .pick.selected {
@@ -70,4 +71,9 @@
   font-size: 1em;
   color: #666;
   margin-top: 5px;
+  display: -webkit-box; /* Flexbox-like behavior for text */
+  -webkit-line-clamp: 2; /* Maximum number of lines to display */
+  -webkit-box-orient: vertical; /* Vertical orientation for box */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Display '...' for overflow text */
 }

@@ -6,6 +6,7 @@ const addPick = async (url) => {
     const response = await api.post("/picks/new", {
       url: url,
     });
+    console.log(response);
     return response.data;
   } catch (error) {
     console.error("Error adding pick:", error);

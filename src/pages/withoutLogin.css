@@ -1,0 +1,132 @@
+.login-button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.intro-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.intro-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.intro-image {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 10px;
+}
+
+.intro-text {
+  flex: 1;
+  text-align: left;
+  font-size: 1em;
+  color: #333;
+  margin: 0;
+}
+
+/* 의견 제시하기 버튼 스타일 */
+.develop-button {
+  background-color: #303d4c; /* 피드백 버튼 배경색 */
+  color: #fff; /* 텍스트 색상 */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  margin-right: 1em;
+}
+
+.develop-button:hover {
+  background-color: #676d74; /* 버튼에 마우스를 올렸을 때 색상 변화 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.develop-button:active {
+  background-color: #2c6bb4; /* 버튼 클릭 시 색상 변화 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 이미지와 텍스트 사이의 간격 */
+.develop-button img {
+  height: 16px;
+  margin-right: 10px; /* 이미지와 텍스트 사이의 간격 */
+}
+.bug-button {
+  background-color: #ef4452; /* 피드백 버튼 배경색 */
+  color: #fff; /* 텍스트 색상 */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  margin-left: 1em;
+}
+
+.bug-button:hover {
+  background-color: #8c212a; /* 버튼에 마우스를 올렸을 때 색상 변화 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.bug-button:active {
+  background-color: #2c6bb4; /* 버튼 클릭 시 색상 변화 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 이미지와 텍스트 사이의 간격 */
+.bug-button img {
+  height: 16px;
+  margin-right: 10px; /* 이미지와 텍스트 사이의 간격 */
+}
+.shopping-button {
+  background-color: #fbb3b9; /* 피드백 버튼 배경색 */
+  color: #000; /* 텍스트 색상 */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.shopping-button:hover {
+  background-color: #e17f87; /* 버튼에 마우스를 올렸을 때 색상 변화 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.shopping-button:active {
+  background-color: #2c6bb4; /* 버튼 클릭 시 색상 변화 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 이미지와 텍스트 사이의 간격 */
+.shopping-button img {
+  height: 16px;
+  margin-right: 10px; /* 이미지와 텍스트 사이의 간격 */
+}

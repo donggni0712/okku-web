@@ -1,0 +1,33 @@
+/* 카카오 로그인 버튼 스타일 */
+.kakao-login-button {
+  background-color: #fee500; /* 카카오 노란색 배경 */
+  color: #3d3d3d; /* 카카오 기본 텍스트 색상 */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.kakao-login-button:hover {
+  background-color: #fdd700; /* 버튼에 마우스를 올렸을 때 색상 변화 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.kakao-login-button:active {
+  background-color: #fdb700; /* 버튼 클릭 시 색상 변화 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 이미지와 텍스트 사이의 간격 */
+.kakao-login-button img {
+  height: 16px;
+  margin-right: 10px; /* 이미지와 텍스트 사이의 간격 */
+}
