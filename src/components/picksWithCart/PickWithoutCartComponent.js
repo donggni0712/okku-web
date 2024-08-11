@@ -137,7 +137,7 @@ const PickWithoutCart = ({
                   />
                 );
               } else {
-                console.error("Error adding pick to cart:", error);
+                alert("Error adding pick to cart:", error);
                 setNotification("카트에 픽을 담는 중 문제가 발생했습니다.");
               }
             }
