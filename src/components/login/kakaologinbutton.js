@@ -27,7 +27,7 @@ const KakaoLoginButton = ({ onLoginSuccess }) => {
         onLoginSuccess(tokens);
       },
       fail: function (err) {
-        console.error(err);
+        alert(err);
       },
     });
   };

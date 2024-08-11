@@ -17,7 +17,7 @@ const InviteButton = () => {
           url: inviteLink,
         });
       } catch (error) {
-        console.error("Error sharing the link:", error);
+        alert("Error sharing the link:", error);
       }
     } else {
       // Fallback for PC: copy the link to the clipboard
@@ -25,7 +25,7 @@ const InviteButton = () => {
         await navigator.clipboard.writeText(inviteLink);
         alert("링크가 복사되었습니다.");
       } catch (error) {
-        console.error("Failed to copy the link:", error);
+        alert("Failed to copy the link:", error);
       }
     }
   };

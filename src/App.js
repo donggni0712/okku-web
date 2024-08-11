@@ -14,7 +14,10 @@ const App = () => {
   const [notification, setNotification] = useState(null);
   const params = new URLSearchParams(window.location.search);
   const recomend = params.get("recomend");
-  localStorage.setItem("recomend", recomend);
+  if (recomend) {
+    localStorage.setItem("recomend", recomend);
+  }
+
   useEffect(() => {
     if (
       window.Kakao.Auth &&
