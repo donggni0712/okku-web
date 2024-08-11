@@ -2,7 +2,7 @@
   border: 1px solid #ccc;
   padding: 10px;
   box-sizing: border-box;
-  width: 10em;
+  width: 100%;
 }
 
 .pick.selected {

@@ -6,7 +6,8 @@ import { usePopup } from "../context/PopupContext";
 import ErrorPopup from "./popup/ErrorPopup";
 import { getReviewsWithoutLogin } from "../api/getReviewsWithoutLogin";
 import PickPageWithoutLogin from "../pages/pickPageWithoutLogin";
-
+import { v4 as uuidv4 } from "uuid";
+import LoginPopup from "./popup/LoginPopup";
 const LandingPage = ({ onLoginSuccess }) => {
   const [animatedText, setAnimatedText] = useState(["", ""]);
   const [url, setUrl] = useState("");
@@ -61,24 +62,46 @@ const LandingPage = ({ onLoginSuccess }) => {
 
   const fetchData = async () => {
     try {
-      const fetchedPick = await getReviewsWithoutLogin(url);
+      // LocalStorage에서 okkuId를 확인하고, 없으면 생성
+      let okkuId = localStorage.getItem("okkuId");
+      if (!okkuId) {
+        okkuId = uuidv4(); // UUID 생성 (uuidv4() 함수는 고유 ID 생성에 사용됩니다)
+        localStorage.setItem("okkuId", okkuId);
+      }
+      const fetchedPick = await getReviewsWithoutLogin(url, okkuId);
       setReviewsData(fetchedPick);
+      hidePopup();
     } catch (err) {
-      showPopup(
-        "error",
-        <ErrorPopup
-          title="지원하지 않는 쇼핑몰입니다."
-          message="개발자에서 쇼핑몰 지원을 문의하면 반영해드립니다!"
-          onClick={() => {
-            hidePopup();
-          }}
-        />
-      );
+      if (
+        err.response.data.message == "must login" &&
+        err.response.status == 402
+      ) {
+        showPopup(
+          "error",
+          <LoginPopup
+            title="비회원 분석 횟수를 모두 소진하였습니다."
+            message="지금 로그인하며 모든 기능이 공짜!"
+            onClick={onLoginSuccess}
+          />
+        );
+      } else {
+        showPopup(
+          "error",
+          <ErrorPopup
+            title="지원하지 않는 쇼핑몰입니다."
+            message="개발자에서 쇼핑몰 지원을 문의하면 반영해드립니다!"
+            onClick={() => {
+              hidePopup();
+            }}
+          />
+        );
+      }
     }
   };
 
   const handleAnalyze = async () => {
     const urlPattern = /^https?:\/\//; // http 또는 https로 시작하는지 확인
+
     if (!urlPattern.test(url)) {
       showPopup(
         "error",
@@ -93,9 +116,9 @@ const LandingPage = ({ onLoginSuccess }) => {
     } else {
       showPopup("central", <div>분석중...</div>);
       await fetchData();
-      hidePopup();
     }
   };
+
   const handleInputChange = (event) => {
     setUrl(event.target.value);
   };

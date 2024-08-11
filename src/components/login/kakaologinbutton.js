@@ -9,18 +9,21 @@ const KakaoLoginButton = ({ onLoginSuccess }) => {
   useEffect(() => {
     // 카카오 SDK 초기화
     if (!window.Kakao.isInitialized()) {
-      window.Kakao.init(KAKAO_JS_KEY); // 여기에 본인의 JavaScript 키를 입력하세요.
+      window.Kakao.init(KAKAO_JS_KEY);
     }
   }, []);
 
   const handleLogin = async () => {
     window.Kakao.Auth.login({
       success: async function (authObj) {
+        console.log(authObj.access_token);
         const tokens = (
           await axios.post(`${API_BASE_URL}/login/app/kakao`, {
             token: authObj.access_token,
+            recomend: localStorage.getItem("recomend"),
           })
         ).data;
+
         onLoginSuccess(tokens);
       },
       fail: function (err) {

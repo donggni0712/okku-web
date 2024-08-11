@@ -56,9 +56,9 @@
   padding-bottom: 1em;
 }
 
-.error-popup button,
-.central-popup button,
-.bottom-popup button {
+.error-popup .popup-button,
+.central-popup .popup-button,
+.bottom-popup .popup-button {
   padding: 12px 24px;
   margin: 5px;
   font-size: 14px;
@@ -71,22 +71,22 @@
   transition: background-color 0.3s ease;
 }
 
-.error-popup button:hover,
-.central-popup button:hover,
-.bottom-popup button:hover {
+.error-popup .popup-button:hover,
+.central-popup .popup-button:hover,
+.bottom-popup .popup-button:hover {
   background-color: #1c8c53;
 }
 
-.error-popup button:focus,
-.central-popup button:focus,
-.bottom-popup button:focus {
+.error-popup .popup-button:focus,
+.central-popup .popup-button:focus,
+.bottom-popup .popup-button:focus {
   outline: none;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.error-popup button:active,
-.central-popup button:active,
-.bottom-popup button:active {
+.error-popup .popup-button:active,
+.central-popup .popup-button:active,
+.bottom-popup .popup-button:active {
   background-color: #004085;
 }
 
@@ -99,8 +99,9 @@
 }
 
 .popup-central,
-.popup-error {
+.popup-error .error-popup {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
