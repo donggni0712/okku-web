@@ -1,0 +1,33 @@
+/* 카카오 로그인 버튼 스타일 */
+.invite-button {
+  background-color: #e17f87;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.invite-button:hover {
+  background-color: #fbb3b9; /* 버튼에 마우스를 올렸을 때 색상 변화 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.invite-button:active {
+  background-color: #fbb3b9; /* 버튼 클릭 시 색상 변화 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 이미지와 텍스트 사이의 간격 */
+.invite-button img {
+  height: 20px;
+  margin-right: 4px; /* 이미지와 텍스트 사이의 간격 */
+}

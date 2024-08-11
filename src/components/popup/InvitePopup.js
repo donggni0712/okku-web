@@ -1,23 +1,22 @@
 // src/components/CentralPopup.js
 import React from "react";
 import PropTypes from "prop-types";
+import KakaoLoginButton from "../login/kakaologinbutton";
+import InviteButton from "../login/Invitebutton";
 
-const ErrorPopup = ({ title, message, onClick }) => {
+const InvitePopup = ({ title, message }) => {
   return (
-    <div className="central-popup">
+    <div className="error-popup">
       <h1 className="central-popup-title">{title}</h1>
       <p className="central-popup-message">{message}</p>
-      <button className="popup-button" onClick={onClick}>
-        확인
-      </button>
+      <InviteButton />
     </div>
   );
 };
 
-ErrorPopup.propTypes = {
+InvitePopup.propTypes = {
   title: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
-export default ErrorPopup;
+export default InvitePopup;

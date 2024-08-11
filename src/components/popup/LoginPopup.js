@@ -1,23 +1,22 @@
 // src/components/CentralPopup.js
 import React from "react";
 import PropTypes from "prop-types";
+import KakaoLoginButton from "../login/kakaologinbutton";
 
-const ErrorPopup = ({ title, message, onClick }) => {
+const LoginPopup = ({ title, message, onLoginSuccess }) => {
   return (
-    <div className="central-popup">
+    <div className="error-popup">
       <h1 className="central-popup-title">{title}</h1>
       <p className="central-popup-message">{message}</p>
-      <button className="popup-button" onClick={onClick}>
-        확인
-      </button>
+      <KakaoLoginButton onLoginSuccess={onLoginSuccess} />
     </div>
   );
 };
 
-ErrorPopup.propTypes = {
+LoginPopup.propTypes = {
   title: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
-export default ErrorPopup;
+export default LoginPopup;

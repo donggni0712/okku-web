@@ -18,13 +18,8 @@ const NewCartInput = ({ onBack, callBackOnSave, pickIds, setCartData }) => {
   return (
     <div className="new-cart-input">
       <div className="header">
-        <button className="back-button">
-          <img
-            src="assets/back-button.png"
-            alt="<"
-            className="back-button-img"
-            onClick={onBack}
-          />
+        <button className="back-button" onClick={onBack}>
+          &lt;
         </button>
         <h2 className="title">새 카트의 이름을 입력해주세요</h2>
         <button className="save-button" onClick={handleSave}>

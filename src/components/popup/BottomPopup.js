@@ -5,8 +5,12 @@ import PropTypes from "prop-types";
 const BottomPopup = ({ button1, button2 }) => {
   return (
     <div className="bottom-popup">
-      <button onClick={button1.onClick}>{button1.text}</button>
-      <button onClick={button2.onClick}>{button2.text}</button>
+      <button className="popup-button" onClick={button1.onClick}>
+        {button1.text}
+      </button>
+      <button className="popup-button" onClick={button2.onClick}>
+        {button2.text}
+      </button>
     </div>
   );
 };

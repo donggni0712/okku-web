@@ -1,5 +1,5 @@
 // src/components/Carts.js
-import React, { useState } from "react";
+import React from "react";
 import Cart from "../cart/Cart";
 import "./carts.css";
 import useGetCarts from "../../hooks/userGetCart";
@@ -31,7 +31,8 @@ const Carts = ({ cartData, setCartData, isPopup = false, handleClick }) => {
     ],
     name: "카트 추가",
   };
-  const showCartsPopup = (cartData) => {
+  const showCartsPopup = () => {
+    console.log("asd ", cartData);
     showPopup(
       "bottom",
       <Carts
@@ -76,20 +77,23 @@ const Carts = ({ cartData, setCartData, isPopup = false, handleClick }) => {
     setCartData(updatedCarts);
     hidePopup();
   };
-
   return (
     <div className="carts-container">
       <div className="carts">
         <Cart {...allViewCart} handleClick={goHome} />
-        {cartData.carts.map((cart, index) => (
-          <Cart
-            cartId={cart.id}
-            key={index}
-            images={cart.picksImages}
-            name={cart.name}
-            handleClick={handleClick}
-          />
-        ))}
+        {cartData ? (
+          cartData.carts.map((cart, index) => (
+            <Cart
+              cartId={cart.id}
+              key={index}
+              images={cart.picksImages}
+              name={cart.name}
+              handleClick={handleClick}
+            />
+          ))
+        ) : (
+          <></>
+        )}
         <div className="add-cart">
           <Cart {...addCart} handleClick={handleAddCart} />
         </div>

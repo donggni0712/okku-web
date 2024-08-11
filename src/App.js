@@ -12,8 +12,15 @@ import PickPageWithoutLogin from "./pages/pickPageWithoutLogin";
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [notification, setNotification] = useState(null);
+  const params = new URLSearchParams(window.location.search);
+  const recomend = params.get("recomend");
+  localStorage.setItem("recomend", recomend);
   useEffect(() => {
-    if (window.Kakao.Auth && window.Kakao.Auth.getAccessToken()) {
+    if (
+      window.Kakao.Auth &&
+      window.Kakao.Auth.getAccessToken() &&
+      localStorage.getItem("refreshToken")
+    ) {
       setIsLoggedIn(true);
       setTokens(
         window.Kakao.Auth.getAccessToken(),

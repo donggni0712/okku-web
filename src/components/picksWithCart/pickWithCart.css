@@ -6,7 +6,11 @@
   margin: 0 auto;
   max-width: 500px;
 }
-
+@media (max-width: 500px) {
+  .picks-wrapper {
+    max-width: 100%; /* 화면이 500px 이하로 줄어들면 max-width를 100%로 설정 */
+  }
+}
 .overlay {
   position: fixed;
   top: 0;

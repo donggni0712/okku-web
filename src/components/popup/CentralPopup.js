@@ -7,8 +7,12 @@ const CentralPopup = ({ title, message, button1, button2 }) => {
     <div className="central-popup">
       <h1 className="central-popup-title">{title}</h1>
       <p className="central-popup-message">{message}</p>
-      <button onClick={button1.onClick}>{button1.text}</button>
-      <button onClick={button2.onClick}>{button2.text}</button>
+      <button className="popup-button" onClick={button1.onClick}>
+        {button1.text}
+      </button>
+      <button className="popup-button" onClick={button2.onClick}>
+        {button2.text}
+      </button>
     </div>
   );
 };

@@ -20,9 +20,29 @@ const refreshAccessToken = async () => {
     setTokens(response.data.accessToken, response.data.refreshToken);
     return response.data.accessToken;
   } catch (error) {
-    console.error("Error refreshing access token:", error);
+    clearStorageForCurrentPage();
+
+    window.location.href = "/";
+
     throw error;
   }
+};
+const clearStorageForCurrentPage = () => {
+  const prefix = "refreshToken"; // 현재 페이지에 관련된 로컬스토리지 키의 접두사
+
+  // 로컬스토리지에서 해당 접두사로 시작하는 항목 삭제
+  Object.keys(localStorage).forEach((key) => {
+    if (key.startsWith(prefix)) {
+      localStorage.removeItem(key);
+    }
+  });
+
+  // // 세션스토리지에서 해당 접두사로 시작하는 항목 삭제
+  // Object.keys(sessionStorage).forEach((key) => {
+  //   if (key.startsWith(prefix)) {
+  //     sessionStorage.removeItem(key);
+  //   }
+  // });
 };
 
 api.interceptors.request.use(

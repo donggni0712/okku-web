@@ -10,6 +10,7 @@ import { getCarts } from "../../api/getCarts";
 import { deletePicks } from "../../api/deletePicks";
 import { getPicks } from "../../api/getPicks";
 import ErrorPopup from "../popup/ErrorPopup";
+import InvitePopup from "../popup/InvitePopup";
 
 const PickWithoutCart = ({
   pickData,
@@ -35,12 +36,22 @@ const PickWithoutCart = ({
   };
 
   const callBackAddCart = (pick) => {
-    let tempPickData = { ...pickData };
-    tempPickData.picks = [pick, ...pickData.picks];
+    try {
+      let tempPickData = { ...pickData };
+      tempPickData.picks = [pick, ...pickData.picks];
 
-    setPickData(tempPickData);
-    setNotification("옷을 Pick! 했습니다.");
-    hidePopup();
+      setPickData(tempPickData);
+      setNotification("옷을 Pick! 했습니다.");
+      hidePopup();
+    } catch (err) {
+      showPopup(
+        "error",
+        <InvitePopup
+          title="친구를 초대하고 무한으로 즐기세요!"
+          message="친구를 초대하고 "
+        />
+      );
+    }
   };
 
   const togglePickSelection = (pick) => {

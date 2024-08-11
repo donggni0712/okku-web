@@ -24,7 +24,7 @@ const Picks = ({
   }
 
   if (getPickError) {
-    return <div>Error fetching data</div>;
+    return <div>내가 담은 픽이 없습니다.</div>;
   }
 
   const handleClick = (pick) => {
