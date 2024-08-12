@@ -6,6 +6,7 @@ import { getReviewsWithoutLogin } from "../api/getReviewsWithoutLogin";
 import { useNavigate, useParams } from "react-router-dom";
 import { getReviews } from "../api/getReviews";
 import ErrorPage from "./errorPage";
+import LoadingComponent from "../components/loading/LoadingComponent";
 
 const PickPage = ({ isLoggedIn, handleLoginSuccess }) => {
   const [data, setData] = useState(null);
@@ -29,7 +30,7 @@ const PickPage = ({ isLoggedIn, handleLoginSuccess }) => {
   });
 
   if (loading) {
-    return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
+    return <LoadingComponent />; // 로딩 중일 때 표시할 내용
   }
 
   if (error) {

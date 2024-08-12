@@ -6,7 +6,7 @@ const InviteButton = () => {
   const handleInvite = async () => {
     const user = await getUserInfo();
 
-    const inviteLink = `https://okku-web.vercel.app?recomend=${user.id}`;
+    const inviteLink = `https://okku.kr?recomend=${user.id}`;
 
     // Check if the browser supports the Web Share API (for mobile)
     if (navigator.share) {

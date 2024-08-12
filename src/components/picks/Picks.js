@@ -3,6 +3,7 @@ import Pick from "../pick/Pick";
 import "./picks.css";
 import useGetPicks from "../../hooks/userGetPick";
 import { useNavigate } from "react-router-dom"; // useNavigate 훅을 사용합니다
+import LoadingComponent from "../loading/LoadingComponent";
 
 const Picks = ({
   pickData,
@@ -20,7 +21,7 @@ const Picks = ({
   };
 
   if (getPickLoading) {
-    return <div>Loading...</div>;
+    return <LoadingComponent />;
   }
 
   if (getPickError) {

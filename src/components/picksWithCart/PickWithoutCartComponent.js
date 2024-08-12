@@ -47,8 +47,8 @@ const PickWithoutCart = ({
       showPopup(
         "error",
         <InvitePopup
-          title="친구를 초대하고 무한으로 즐기세요!"
-          message="친구를 초대하고 "
+          title="친구를 초대하고 무제한으로 즐기세요!"
+          message="친구가 회원가입하면 오꾸를 무제한으로 즐길 수 있습니다!"
         />
       );
     }
