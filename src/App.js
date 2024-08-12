@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { PopupProvider } from "./context/PopupContext";
@@ -8,6 +7,9 @@ import { setTokens } from "./service/authService";
 import Notification from "./components/popup/Notification";
 import PickPage from "./pages/pickPage";
 import PickPageWithoutLogin from "./pages/pickPageWithoutLogin";
+import RouteChangeTracker from "./RouteChangeTraker";
+import Footer from "./components/footer/FooterComponent"; // Footer import
+import "./App.css"; // 스타일링을 위한 CSS 파일 import
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,51 +40,58 @@ const App = () => {
     setIsLoggedIn(true);
     setTokens(tokens.accessToken, tokens.refreshToken);
   };
+
   return (
     <Router>
+      <RouteChangeTracker />
       <PopupProvider>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Main
-                handleLoginSuccess={handleLoginSuccess}
-                isLoggedIn={isLoggedIn}
-                notification={notification}
-                setNotification={setNotification}
+        <div className="App-wrap">
+          <div className="content-wrap">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Main
+                    handleLoginSuccess={handleLoginSuccess}
+                    isLoggedIn={isLoggedIn}
+                    notification={notification}
+                    setNotification={setNotification}
+                  />
+                }
               />
-            }
-          />
-          <Route
-            path="/cart/:cartId"
-            element={
-              <CartPage
-                handleLoginSuccess={handleLoginSuccess}
-                isLoggedIn={isLoggedIn}
-                notification={notification}
-                setNotification={setNotification}
+              <Route
+                path="/cart/:cartId"
+                element={
+                  <CartPage
+                    handleLoginSuccess={handleLoginSuccess}
+                    isLoggedIn={isLoggedIn}
+                    notification={notification}
+                    setNotification={setNotification}
+                  />
+                }
               />
-            }
-          />
-          <Route
-            path="/pick/:pickId"
-            element={
-              <PickPage
-                handleLoginSuccess={handleLoginSuccess}
-                isLoggedIn={isLoggedIn}
-                notification={notification}
-                setNotification={setNotification}
+              <Route
+                path="/pick/:pickId"
+                element={
+                  <PickPage
+                    handleLoginSuccess={handleLoginSuccess}
+                    isLoggedIn={isLoggedIn}
+                    notification={notification}
+                    setNotification={setNotification}
+                  />
+                }
               />
-            }
-          />
-        </Routes>
+            </Routes>
+          </div>
+          {notification && (
+            <Notification
+              message={notification}
+              onClose={() => setNotification(null)}
+            />
+          )}
+          <Footer />
+        </div>
       </PopupProvider>
-      {notification && (
-        <Notification
-          message={notification}
-          onClose={() => setNotification(null)}
-        />
-      )}
     </Router>
   );
 };

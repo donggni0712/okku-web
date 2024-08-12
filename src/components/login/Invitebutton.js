@@ -1,8 +1,13 @@
 import React from "react";
 import "./invitebutton.css";
 import { getUserInfo } from "../../api/getUserInfo";
+import ReactGA from "react-ga";
 
 const InviteButton = () => {
+  ReactGA.event({
+    category: "Invite",
+    action: `Clicked Invite button`,
+  });
   const handleInvite = async () => {
     const user = await getUserInfo();
 

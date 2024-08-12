@@ -1,7 +1,6 @@
 // src/components/CentralPopup.js
 import React from "react";
 import PropTypes from "prop-types";
-import KakaoLoginButton from "../login/kakaologinbutton";
 import InviteButton from "../login/Invitebutton";
 
 const InvitePopup = ({ title, message }) => {
