@@ -174,20 +174,20 @@ const LandingPage = ({ onLoginSuccess }) => {
           <div className="login-button">
             <KakaoLoginButton onLoginSuccess={onLoginSuccess} />
           </div>
-          <div className="login-button">
+          <div className="join-kakaotalk-button">
             <a
               href="https://open.kakao.com/o/g3EpAvFg"
               className="develop-button"
             >
               <img src="assets/develop.png" />
-              개발에 간섭하기
+              개발자에게 조언하기
             </a>
             <a href="https://open.kakao.com/o/g3EpAvFg" className="bug-button">
               <img src="assets/bug.png" />
               버그 제보하기
             </a>
           </div>
-          <div className="login-button">
+          <div className="join-kakaotalk-button">
             <a
               href="https://open.kakao.com/o/g3EpAvFg"
               className="shopping-button"
