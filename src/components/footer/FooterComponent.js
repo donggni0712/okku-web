@@ -20,9 +20,7 @@ const Footer = () => {
         alignItems: "center",
       }}
     >
-      <p style={{ margin: 0 }}>
-        &copy; 2024 Your Company. All rights reserved.
-      </p>
+      <p style={{ margin: 0 }}>&copy; 2024 Okku. All rights reserved.</p>
       <div style={{ display: "flex", gap: "10px" }}>
         <a
           href="https://open.kakao.com/o/g3EpAvFg"
