@@ -6,7 +6,6 @@ const getReviews = async (pickId) => {
     const response = await api.get(`picks/reviews?pickId=${pickId}`);
     return response.data;
   } catch (error) {
-    console.error("Error fetching picks:", error);
     throw error;
   }
 };

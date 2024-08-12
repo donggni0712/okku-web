@@ -6,7 +6,6 @@ const deleteCart = async (cartId) => {
     const response = await api.delete(`/carts/${cartId}`);
     return response.data;
   } catch (error) {
-    console.error("Error deleting cart:", error);
     throw error;
   }
 };

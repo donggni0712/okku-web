@@ -33,7 +33,6 @@ const Carts = ({ cartData, setCartData, isPopup = false, handleClick }) => {
     name: "카트 추가",
   };
   const showCartsPopup = () => {
-    console.log("asd ", cartData);
     showPopup(
       "bottom",
       <Carts

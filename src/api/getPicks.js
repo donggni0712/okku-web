@@ -10,7 +10,6 @@ const getPicks = async (cartId = null, page = 1, size = 30) => {
     const response = await api.get(url);
     return response.data;
   } catch (error) {
-    console.error("Error fetching picks:", error);
     throw error;
   }
 };

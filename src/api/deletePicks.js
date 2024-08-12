@@ -10,7 +10,6 @@ const deletePicks = async (pickIds, cartId, isDeletePermenant) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Error deleting picks:", error);
     throw error;
   }
 };

@@ -11,7 +11,6 @@ const getUserInfo = async (name, height, weight, form) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Error updating userInfo:", error);
     throw error;
   }
 };

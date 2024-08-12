@@ -9,7 +9,6 @@ const getReviewsWithoutLogin = async (url, okkuId) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Error fetching picks:", error);
     throw error;
   }
 };

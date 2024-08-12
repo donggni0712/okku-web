@@ -7,8 +7,6 @@ const movePick = async (
   destinationCartId,
   isDeleteFromOrigin
 ) => {
-  console.log("caal bmo");
-  console.log(pickIds, sourceCartId, destinationCartId);
   try {
     const response = await api.patch(`/picks`, {
       pickIds: pickIds,
@@ -18,7 +16,6 @@ const movePick = async (
     });
     return response.data;
   } catch (error) {
-    console.error("Error move picks:", error);
     throw error;
   }
 };
