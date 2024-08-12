@@ -8,12 +8,23 @@ import { getReviewsWithoutLogin } from "../api/getReviewsWithoutLogin";
 import PickPageWithoutLogin from "../pages/pickPageWithoutLogin";
 import { v4 as uuidv4 } from "uuid";
 import LoginPopup from "./popup/LoginPopup";
+import ReactGA from "react-ga";
+
 const LandingPage = ({ onLoginSuccess }) => {
   const [animatedText, setAnimatedText] = useState(["", ""]);
   const [url, setUrl] = useState("");
   const [reviewsData, setReviewsData] = useState(null);
   const { showPopup, hidePopup } = usePopup();
   const navigate = useNavigate();
+
+  const handleButtonClick = (referer) => {
+    ReactGA.event({
+      category: "Join open chating",
+      action: `Clicked ${referer} button`,
+      label: `Landing`,
+    });
+  };
+
   useEffect(() => {
     const textSequence = [
       ["", ""],
@@ -100,7 +111,12 @@ const LandingPage = ({ onLoginSuccess }) => {
   };
 
   const handleAnalyze = async () => {
-    const urlPattern = /^https?:\/\//; // http 또는 https로 시작하는지 확인
+    ReactGA.event({
+      category: "Use",
+      action: `Clicked Analyze button`,
+      label: `Landing`,
+    });
+    const urlPattern = /^https?:\/\//;
 
     if (!urlPattern.test(url)) {
       showPopup(
@@ -178,11 +194,16 @@ const LandingPage = ({ onLoginSuccess }) => {
             <a
               href="https://open.kakao.com/o/g3EpAvFg"
               className="develop-button"
+              onClick={() => handleButtonClick("Join develop")}
             >
               <img src="assets/develop.png" />
               개발자에게 조언하기
             </a>
-            <a href="https://open.kakao.com/o/g3EpAvFg" className="bug-button">
+            <a
+              href="https://open.kakao.com/o/g3EpAvFg"
+              className="bug-button"
+              onClick={() => handleButtonClick("Report bug")}
+            >
               <img src="assets/bug.png" />
               버그 제보하기
             </a>
@@ -191,6 +212,7 @@ const LandingPage = ({ onLoginSuccess }) => {
             <a
               href="https://open.kakao.com/o/g3EpAvFg"
               className="shopping-button"
+              onClick={() => handleButtonClick("Request adding shopingmol")}
             >
               <img src="assets/shopping.png" />
               쇼핑몰 추가해달라고 하기

@@ -11,6 +11,8 @@ import { deletePicks } from "../../api/deletePicks";
 import { getPicks } from "../../api/getPicks";
 import Notification from "../popup/Notification";
 import ErrorPopup from "../popup/ErrorPopup";
+import ReactGA from "react-ga";
+import InvitePopup from "../popup/InvitePopup";
 
 const PickWithCart = ({
   pickData,
@@ -25,6 +27,11 @@ const PickWithCart = ({
   const { showPopup, hidePopup } = usePopup();
 
   const showAddPickPopup = () => {
+    ReactGA.event({
+      category: "Add Pick",
+      action: `Clicked Add pick button`,
+      label: `Cart Page`,
+    });
     showPopup(
       "bottom",
       <NewPickInput
@@ -35,17 +42,23 @@ const PickWithCart = ({
     );
   };
 
-  const showChooseAdd = () => {
-    showPopup("bottom", <div></div>);
-  };
-
   const callBackAddCart = (pick) => {
-    let tempPickData = pickData;
-    tempPickData.picks = [pick, ...pickData.picks];
+    try {
+      let tempPickData = { ...pickData };
+      tempPickData.picks = [pick, ...pickData.picks];
 
-    setPickData(tempPickData);
-    setNotification("옷을 Pick! 했습니다.");
-    hidePopup();
+      setPickData(tempPickData);
+      setNotification("옷을 Pick! 했습니다.");
+      hidePopup();
+    } catch (err) {
+      showPopup(
+        "error",
+        <InvitePopup
+          title="아이템은 최대 9개까지 픽 가능합니다"
+          message="친구가 회원가입하면 아이템을 무제한으로 픽할 수 있습니다!"
+        />
+      );
+    }
   };
 
   const togglePickSelection = (pick) => {
@@ -57,6 +70,11 @@ const PickWithCart = ({
   };
 
   const handledelete = () => {
+    ReactGA.event({
+      category: "Delete Pick",
+      action: `Clicked Delete pick button`,
+      label: `Cart Page`,
+    });
     showPopup(
       "central",
       <CentralPopup
@@ -86,6 +104,11 @@ const PickWithCart = ({
   };
 
   const showCartPopup = async () => {
+    ReactGA.event({
+      category: "Move Pick",
+      action: `Clicked Move pick button`,
+      label: `Cart Page`,
+    });
     let tempCart = await getCarts();
     tempCart.carts = tempCart.carts.filter((cart) => cart.id !== cartId);
     setCartData(tempCart);

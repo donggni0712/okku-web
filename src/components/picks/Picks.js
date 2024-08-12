@@ -4,6 +4,7 @@ import "./picks.css";
 import useGetPicks from "../../hooks/userGetPick";
 import { useNavigate } from "react-router-dom"; // useNavigate 훅을 사용합니다
 import LoadingComponent from "../loading/LoadingComponent";
+import ReactGA from "react-ga";
 
 const Picks = ({
   pickData,
@@ -29,6 +30,10 @@ const Picks = ({
   }
 
   const handleClick = (pick) => {
+    ReactGA.event({
+      category: "Click Pick",
+      action: `Clicked Pick`,
+    });
     if (isEditing) {
       togglePickSelection(pick);
     } else {
