@@ -14,11 +14,7 @@ const LoadingComponent = () => {
 
   return (
     <div className="loading-container">
-      <img
-        src="path_to_your_loading.gif"
-        alt="Loading GIF"
-        className="loading-gif"
-      />
+      <img src="assets/loading.gif" alt="Loading GIF" className="loading-gif" />
       <div className="loading-text">로딩중{dots}</div>
     </div>
   );
