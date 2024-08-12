@@ -8,7 +8,6 @@ const getCarts = async (page = 1, size = 30) => {
     const response = await api.get(url);
     return response.data;
   } catch (error) {
-    console.error("Error fetching carts:", error);
     throw error;
   }
 };

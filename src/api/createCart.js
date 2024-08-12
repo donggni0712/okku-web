@@ -8,7 +8,6 @@ const createCart = async (name, pickIds) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Error creating cart:", error);
     throw error;
   }
 };

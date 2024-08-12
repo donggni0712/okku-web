@@ -16,7 +16,6 @@ const KakaoLoginButton = ({ onLoginSuccess }) => {
   const handleLogin = async () => {
     window.Kakao.Auth.login({
       success: async function (authObj) {
-        console.log(authObj.access_token);
         const tokens = (
           await axios.post(`${API_BASE_URL}/login/app/kakao`, {
             token: authObj.access_token,
