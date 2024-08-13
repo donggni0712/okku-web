@@ -9,6 +9,7 @@ import PickPageWithoutLogin from "../pages/pickPageWithoutLogin";
 import { v4 as uuidv4 } from "uuid";
 import LoginPopup from "./popup/LoginPopup";
 import ReactGA from "react-ga";
+import LoadingComponent from "./loading/LoadingComponent";
 
 const LandingPage = ({ onLoginSuccess }) => {
   const [animatedText, setAnimatedText] = useState(["", ""]);
@@ -130,7 +131,7 @@ const LandingPage = ({ onLoginSuccess }) => {
         />
       );
     } else {
-      showPopup("central", <div>분석중...</div>);
+      showPopup("central", <LoadingComponent />);
       await fetchData();
     }
   };
