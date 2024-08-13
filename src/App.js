@@ -6,10 +6,10 @@ import CartPage from "./pages/cartPage";
 import { setTokens } from "./service/authService";
 import Notification from "./components/popup/Notification";
 import PickPage from "./pages/pickPage";
-import PickPageWithoutLogin from "./pages/pickPageWithoutLogin";
-import RouteChangeTracker from "./RouteChangeTraker";
 import Footer from "./components/footer/FooterComponent"; // Footer import
 import "./App.css"; // 스타일링을 위한 CSS 파일 import
+import RouteChangeTracker from "./RouteChangeTraker";
+import { Analytics } from "@vercel/analytics/react";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -44,6 +44,7 @@ const App = () => {
   return (
     <Router>
       <RouteChangeTracker />
+      <Analytics />
       <PopupProvider>
         <div className="App-wrap">
           <div className="content-wrap">
