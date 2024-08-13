@@ -2,8 +2,12 @@ import React from "react";
 import "./invitebutton.css";
 import { getUserInfo } from "../../api/getUserInfo";
 import ReactGA from "react-ga";
+import { track } from "@vercel/analytics";
 
 const InviteButton = () => {
+  track("Invite", {
+    action: `Clicked Invite button`,
+  });
   ReactGA.event({
     category: "Invite",
     action: `Clicked Invite button`,

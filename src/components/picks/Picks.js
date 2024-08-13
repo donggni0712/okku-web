@@ -5,6 +5,7 @@ import useGetPicks from "../../hooks/userGetPick";
 import { useNavigate } from "react-router-dom"; // useNavigate 훅을 사용합니다
 import LoadingComponent from "../loading/LoadingComponent";
 import ReactGA from "react-ga";
+import { track } from "@vercel/analytics";
 
 const Picks = ({
   pickData,
@@ -30,6 +31,9 @@ const Picks = ({
   }
 
   const handleClick = (pick) => {
+    track("Click Pick", {
+      action: `Clicked Pick`,
+    });
     ReactGA.event({
       category: "Click Pick",
       action: `Clicked Pick`,

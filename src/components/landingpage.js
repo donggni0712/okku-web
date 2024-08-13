@@ -9,6 +9,7 @@ import PickPageWithoutLogin from "../pages/pickPageWithoutLogin";
 import { v4 as uuidv4 } from "uuid";
 import LoginPopup from "./popup/LoginPopup";
 import ReactGA from "react-ga";
+import { track } from "@vercel/analytics";
 
 import AnalyzingComponent from "./loading/AnalyzingComponent";
 
@@ -20,6 +21,10 @@ const LandingPage = ({ onLoginSuccess }) => {
   const navigate = useNavigate();
 
   const handleButtonClick = (referer) => {
+    track("Join open chating", {
+      action: `Clicked ${referer} button`,
+      label: `Landing`,
+    });
     ReactGA.event({
       category: "Join open chating",
       action: `Clicked ${referer} button`,
@@ -113,6 +118,10 @@ const LandingPage = ({ onLoginSuccess }) => {
   };
 
   const handleAnalyze = async () => {
+    track("Use", {
+      action: `Clicked Analyze button`,
+      label: `Landing`,
+    });
     ReactGA.event({
       category: "Use",
       action: `Clicked Analyze button`,

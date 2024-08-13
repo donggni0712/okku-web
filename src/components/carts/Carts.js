@@ -8,6 +8,7 @@ import NewCartInput from "../createCart/NewCartInput";
 import { getCarts } from "../../api/getCarts";
 import { useNavigate } from "react-router-dom";
 import ReactGA from "react-ga";
+import { track } from "@vercel/analytics";
 
 const Carts = ({ cartData, setCartData, isPopup = false, handleClick }) => {
   const { getCartLoading, getCartErro } = useGetCarts(setCartData);
@@ -49,6 +50,10 @@ const Carts = ({ cartData, setCartData, isPopup = false, handleClick }) => {
   };
 
   const handleAddCart = () => {
+    track("Create Cart", {
+      category: "Create Cart",
+      action: `Clicked Create Cart button`,
+    });
     ReactGA.event({
       category: "Create Cart",
       action: `Clicked Create Cart button`,
