@@ -21,10 +21,7 @@ const LandingPage = ({ onLoginSuccess }) => {
   const navigate = useNavigate();
 
   const handleButtonClick = (referer) => {
-    track("Join open chating", {
-      action: `Clicked ${referer} button`,
-      label: `Landing`,
-    });
+    track(`ClickOpenChating_${referer}`);
     ReactGA.event({
       category: "Join open chating",
       action: `Clicked ${referer} button`,
@@ -118,10 +115,7 @@ const LandingPage = ({ onLoginSuccess }) => {
   };
 
   const handleAnalyze = async () => {
-    track("Use", {
-      action: `Clicked Analyze button`,
-      label: `Landing`,
-    });
+    track("Use_withoutLogin");
     ReactGA.event({
       category: "Use",
       action: `Clicked Analyze button`,

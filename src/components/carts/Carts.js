@@ -50,10 +50,7 @@ const Carts = ({ cartData, setCartData, isPopup = false, handleClick }) => {
   };
 
   const handleAddCart = () => {
-    track("Create Cart", {
-      category: "Create Cart",
-      action: `Clicked Create Cart button`,
-    });
+    track("CreateCart");
     ReactGA.event({
       category: "Create Cart",
       action: `Clicked Create Cart button`,

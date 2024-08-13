@@ -31,9 +31,7 @@ const Picks = ({
   }
 
   const handleClick = (pick) => {
-    track("Click Pick", {
-      action: `Clicked Pick`,
-    });
+    track("ClickPick");
     ReactGA.event({
       category: "Click Pick",
       action: `Clicked Pick`,
