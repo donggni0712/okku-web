@@ -4,10 +4,7 @@ import { track } from "@vercel/analytics";
 
 const Footer = () => {
   const handleButtonClick = (platform) => {
-    track("Social Media", {
-      action: `Clicked ${platform} button`,
-      label: `Footer ${platform}`,
-    });
+    track(`ClickedSocialMedia_${platform}`);
     ReactGA.event({
       category: "Social Media",
       action: `Clicked ${platform} button`,

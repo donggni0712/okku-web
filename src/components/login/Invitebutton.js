@@ -5,9 +5,7 @@ import ReactGA from "react-ga";
 import { track } from "@vercel/analytics";
 
 const InviteButton = () => {
-  track("Invite", {
-    action: `Clicked Invite button`,
-  });
+  track("Invite");
   ReactGA.event({
     category: "Invite",
     action: `Clicked Invite button`,

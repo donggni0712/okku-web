@@ -7,7 +7,6 @@ const RouteChangeTracker = () => {
   useEffect(() => {
     if (!window.location.href.includes("localhost")) {
       ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID);
-      console.log(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID);
     }
     setInitialized(true);
   }, []);

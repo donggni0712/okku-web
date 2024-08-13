@@ -27,10 +27,7 @@ const PickWithoutCart = ({
   const { showPopup, hidePopup } = usePopup();
 
   const showAddPickPopup = () => {
-    track("Add Pick", {
-      action: `Clicked MoAddve pick button`,
-      label: `All Pick Page`,
-    });
+    track("AddPick_RootPage");
     ReactGA.event({
       category: "Add Pick",
       action: `Clicked MoAddve pick button`,
@@ -74,10 +71,7 @@ const PickWithoutCart = ({
   };
 
   const handleDelete = () => {
-    track("Delete Pick", {
-      action: `Clicked Delete pick button`,
-      label: `All Pick Page`,
-    });
+    track("DeletePick_RootPage");
     ReactGA.event({
       category: "Delete Pick",
       action: `Clicked Delete pick button`,
@@ -112,10 +106,7 @@ const PickWithoutCart = ({
   };
 
   const showCartPopup = () => {
-    track("Move Pick", {
-      action: `Clicked Move pick button`,
-      label: `Move Pick Page`,
-    });
+    track("MovePick_RootPage");
     ReactGA.event({
       category: "Move Pick",
       action: `Clicked Move pick button`,
