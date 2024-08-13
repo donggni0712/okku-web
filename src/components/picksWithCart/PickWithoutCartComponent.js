@@ -12,6 +12,7 @@ import { getPicks } from "../../api/getPicks";
 import ErrorPopup from "../popup/ErrorPopup";
 import InvitePopup from "../popup/InvitePopup";
 import ReactGA from "react-ga";
+import { track } from "@vercel/analytics";
 
 const PickWithoutCart = ({
   pickData,
@@ -26,6 +27,10 @@ const PickWithoutCart = ({
   const { showPopup, hidePopup } = usePopup();
 
   const showAddPickPopup = () => {
+    track("Add Pick", {
+      action: `Clicked MoAddve pick button`,
+      label: `All Pick Page`,
+    });
     ReactGA.event({
       category: "Add Pick",
       action: `Clicked MoAddve pick button`,
@@ -69,6 +74,10 @@ const PickWithoutCart = ({
   };
 
   const handleDelete = () => {
+    track("Delete Pick", {
+      action: `Clicked Delete pick button`,
+      label: `All Pick Page`,
+    });
     ReactGA.event({
       category: "Delete Pick",
       action: `Clicked Delete pick button`,
@@ -103,6 +112,10 @@ const PickWithoutCart = ({
   };
 
   const showCartPopup = () => {
+    track("Move Pick", {
+      action: `Clicked Move pick button`,
+      label: `Move Pick Page`,
+    });
     ReactGA.event({
       category: "Move Pick",
       action: `Clicked Move pick button`,

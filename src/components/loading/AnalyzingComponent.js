@@ -13,7 +13,7 @@ const AnalyzingComponent = () => {
   }, []);
 
   return (
-    <div className="loading-container">
+    <div className="analyzing-container">
       <img src="assets/loading.gif" alt="Loading GIF" className="loading-gif" />
       <div className="loading-text">분석중{dots}</div>
       <div className="message">1분가량 시간이 소모될 수 있습니다.</div>
