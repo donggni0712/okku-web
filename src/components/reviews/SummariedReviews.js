@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./summariedReviews.css";
 import { getReviewsWithoutLogin } from "../../api/getReviewsWithoutLogin";
 import AnalyzingComponent from "../loading/AnalyzingComponent";
+import ErrorPage from "../../pages/errorPage";
 
 const SummariedReviews = ({ productPk, platform, reviews }) => {
   const [activeTab, setActiveTab] = useState("cons");
@@ -57,7 +58,11 @@ const SummariedReviews = ({ productPk, platform, reviews }) => {
   }
 
   if (!reviewsData) {
-    return <div>리뷰 데이터를 가져오는데 실패했습니다.</div>;
+    return (
+      <div>
+        <ErrorPage />
+      </div>
+    );
   }
 
   const sortedReviews = reviewsData[activeTab].sort(
