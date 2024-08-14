@@ -1,16 +1,16 @@
 import React from "react";
 import "./invitebutton.css";
 import { getUserInfo } from "../../api/getUserInfo";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import { track } from "@vercel/analytics";
 
 const InviteButton = () => {
-  track("Invite");
-  ReactGA.event({
-    category: "Invite",
-    action: `Clicked Invite button`,
-  });
   const handleInvite = async () => {
+    track("Invite");
+    ReactGA.event({
+      category: "Invite",
+      action: `Clicked Invite button`,
+    });
     const user = await getUserInfo();
 
     const inviteLink = `https://okku.kr?recomend=${user.id}`;

@@ -51,7 +51,7 @@ const PickPage = ({ isLoggedIn, handleLoginSuccess }) => {
             </button>
           </div>
           {data ? <PickInfo pick={data.pick} /> : <div>Pick not found.</div>}
-          <SummariedReviews reviewsData={data.reviews} />
+          <SummariedReviews reviews={data.reviews} />
         </div>
       ) : (
         <KakaoLoginButton onLoginSuccess={handleLoginSuccess} />

@@ -11,7 +11,7 @@ import { deletePicks } from "../../api/deletePicks";
 import { getPicks } from "../../api/getPicks";
 import ErrorPopup from "../popup/ErrorPopup";
 import InvitePopup from "../popup/InvitePopup";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import { track } from "@vercel/analytics";
 
 const PickWithoutCart = ({

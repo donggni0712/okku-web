@@ -104,6 +104,13 @@
   margin-right: 10px;
 }
 
+.header-image {
+  width: 30px;
+  height: auto;
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+}
+
 .analyze-button {
   padding: 10px 20px;
   background-color: #26a762;
