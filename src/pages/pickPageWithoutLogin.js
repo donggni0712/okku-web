@@ -16,8 +16,8 @@ const PickPageWithoutLogin = ({ data, onLoginSuccess, setData }) => {
             &lt;
           </button>
         </div>
-        {data ? <PickInfo pick={data.pick} /> : <div>Pick not found.</div>}
-        <SummariedReviews reviewsData={data.reviews} />
+        {data ? <PickInfo pick={data} /> : <div>Pick not found.</div>}
+        <SummariedReviews productPk={data.productPk} platform={data.platform} />
       </div>
     </div>
   );

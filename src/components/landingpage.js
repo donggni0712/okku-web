@@ -12,11 +12,12 @@ import ReactGA from "react-ga";
 import { track } from "@vercel/analytics";
 
 import AnalyzingComponent from "./loading/AnalyzingComponent";
+import { getItemInfoWithoutLogin } from "../api/getItemInfoWithoutLogin";
 
 const LandingPage = ({ onLoginSuccess }) => {
   const [animatedText, setAnimatedText] = useState(["", ""]);
   const [url, setUrl] = useState("");
-  const [reviewsData, setReviewsData] = useState(null);
+  const [itemInfoData, setItemInfoData] = useState(null);
   const { showPopup, hidePopup } = usePopup();
   const navigate = useNavigate();
 
@@ -80,11 +81,11 @@ const LandingPage = ({ onLoginSuccess }) => {
       // LocalStorage에서 okkuId를 확인하고, 없으면 생성
       let okkuId = localStorage.getItem("okkuId");
       if (!okkuId) {
-        okkuId = uuidv4(); // UUID 생성 (uuidv4() 함수는 고유 ID 생성에 사용됩니다)
+        okkuId = uuidv4();
         localStorage.setItem("okkuId", okkuId);
       }
-      const fetchedPick = await getReviewsWithoutLogin(url, okkuId);
-      setReviewsData(fetchedPick);
+      const fetchedPick = await getItemInfoWithoutLogin(url, okkuId);
+      setItemInfoData(fetchedPick);
       hidePopup();
     } catch (err) {
       if (
@@ -146,14 +147,17 @@ const LandingPage = ({ onLoginSuccess }) => {
   };
   return (
     <>
-      {reviewsData ? (
+      {itemInfoData ? (
         <div>
-          <PickPageWithoutLogin data={reviewsData} setData={setReviewsData} />
+          <PickPageWithoutLogin data={itemInfoData} setData={setItemInfoData} />
         </div>
       ) : (
         <div className="app-container">
           {/* 상단 텍스트 */}
-          <div className="header-text">옷 구매는 오꾸</div>
+          <div className="header-text">
+            옷 구매는 오꾸
+            <img src={"assets/beta.png"} alt="Logo" className="header-image" />
+          </div>
 
           {/* 로고와 타이틀 */}
           <div className="logo-title-center">
@@ -192,6 +196,9 @@ const LandingPage = ({ onLoginSuccess }) => {
             <button className="analyze-button" onClick={handleAnalyze}>
               상품 분석하기!
             </button>
+          </div>
+          <div style={{ color: "#888" }}>
+            베타 버전은 musinsa, zigzag, ably만 지원합니다.
           </div>
           <div className="login-button">
             <KakaoLoginButton onLoginSuccess={onLoginSuccess} />

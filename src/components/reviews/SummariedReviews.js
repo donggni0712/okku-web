@@ -1,9 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./summariedReviews.css";
+import { getReviewsWithoutLogin } from "../../api/getReviewsWithoutLogin";
+import AnalyzingComponent from "../loading/AnalyzingComponent";
 
-const SummariedReviews = ({ reviewsData }) => {
+const SummariedReviews = ({ productPk, platform, reviews }) => {
   const [activeTab, setActiveTab] = useState("cons");
   const [expandedReviews, setExpandedReviews] = useState([]); // 배열로 관리
+  const [reviewsData, setReviewsData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        if (reviews) {
+          setReviewsData(reviews);
+        } else {
+          let okkuId = localStorage.getItem("okkuId");
+          const reviewData = await getReviewsWithoutLogin(
+            productPk,
+            platform,
+            okkuId
+          ); // 데이터를 가져오는 함수 호출
+          setReviewsData(reviewData.reviews);
+        }
+      } catch (error) {
+        console.error("Failed to fetch reviews", error);
+      } finally {
+        setLoading(false); // 로딩 완료 후 로딩 상태 업데이트
+      }
+    };
+
+    fetchReviews();
+  }, []);
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
@@ -17,6 +45,21 @@ const SummariedReviews = ({ reviewsData }) => {
       setExpandedReviews([...expandedReviews, index]); // 아니면 열기
     }
   };
+
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <div className="loading-message">
+          <AnalyzingComponent />
+        </div>
+      </div>
+    );
+  }
+
+  if (!reviewsData) {
+    return <div>리뷰 데이터를 가져오는데 실패했습니다.</div>;
+  }
+
   const sortedReviews = reviewsData[activeTab].sort(
     (a, b) => b.count - a.count
   );
@@ -48,7 +91,6 @@ const SummariedReviews = ({ reviewsData }) => {
                 expandedReviews.includes(index) ? "open" : ""
               }`}
               onClick={() => handleReviewClick(index)}
-              div
             >
               <span>{review.content}</span>
               <span className="review-count">{review.count}명</span>
