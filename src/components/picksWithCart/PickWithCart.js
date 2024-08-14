@@ -11,7 +11,7 @@ import { deletePicks } from "../../api/deletePicks";
 import { getPicks } from "../../api/getPicks";
 import Notification from "../popup/Notification";
 import ErrorPopup from "../popup/ErrorPopup";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import InvitePopup from "../popup/InvitePopup";
 import { track } from "@vercel/analytics";
 

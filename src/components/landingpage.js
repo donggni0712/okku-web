@@ -8,7 +8,7 @@ import { getReviewsWithoutLogin } from "../api/getReviewsWithoutLogin";
 import PickPageWithoutLogin from "../pages/pickPageWithoutLogin";
 import { v4 as uuidv4 } from "uuid";
 import LoginPopup from "./popup/LoginPopup";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import { track } from "@vercel/analytics";
 
 import AnalyzingComponent from "./loading/AnalyzingComponent";

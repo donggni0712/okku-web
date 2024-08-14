@@ -4,7 +4,7 @@ import "./picks.css";
 import useGetPicks from "../../hooks/userGetPick";
 import { useNavigate } from "react-router-dom"; // useNavigate 훅을 사용합니다
 import LoadingComponent from "../loading/LoadingComponent";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import { track } from "@vercel/analytics";
 
 const Picks = ({
