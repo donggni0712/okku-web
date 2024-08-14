@@ -11,8 +11,6 @@ const useGetPicks = (setPickData, cartId = null, page = 1, size = 30) => {
     const fetchData = async () => {
       try {
         const data = await getPicks(cartId, page, size);
-        console.log(data);
-        console.log(data.picks);
         setGetPickData(data);
         if (setPickData) {
           setPickData(data);

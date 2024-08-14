@@ -89,6 +89,7 @@ const LandingPage = ({ onLoginSuccess }) => {
       hidePopup();
     } catch (err) {
       if (
+        err.response &&
         err.response.data.message == "must login" &&
         err.response.status == 402
       ) {
@@ -98,6 +99,21 @@ const LandingPage = ({ onLoginSuccess }) => {
             title="비회원 분석 횟수를 모두 소진하였습니다."
             message="지금 로그인하며 모든 기능이 공짜!"
             onClick={onLoginSuccess}
+          />
+        );
+      } else if (
+        err.response &&
+        err.response.data.message == "domain invalid" &&
+        err.response.status == 400
+      ) {
+        showPopup(
+          "error",
+          <ErrorPopup
+            title="지원하지 않는 쇼핑몰입니다."
+            message="개발자에서 쇼핑몰 지원을 문의하면 반영해드립니다!"
+            onClick={() => {
+              window.location.href = "https://okku.kr";
+            }}
           />
         );
       } else {
@@ -138,7 +154,6 @@ const LandingPage = ({ onLoginSuccess }) => {
     } else {
       showPopup("central", <AnalyzingComponent />);
       await fetchData();
-      hidePopup();
     }
   };
 
@@ -149,7 +164,11 @@ const LandingPage = ({ onLoginSuccess }) => {
     <>
       {itemInfoData ? (
         <div>
-          <PickPageWithoutLogin data={itemInfoData} setData={setItemInfoData} />
+          <PickPageWithoutLogin
+            data={itemInfoData}
+            setData={setItemInfoData}
+            onLoginSuccess={onLoginSuccess}
+          />
         </div>
       ) : (
         <div className="app-container">
