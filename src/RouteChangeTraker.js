@@ -13,7 +13,7 @@ const RouteChangeTracker = () => {
 
   useEffect(() => {
     if (initialized) {
-      ReactGA.pageview(window.location.pathname + window.location.search);
+      ReactGA.send(window.location.pathname + window.location.search);
     }
   }, [initialized]);
 

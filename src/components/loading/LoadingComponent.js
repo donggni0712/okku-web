@@ -14,7 +14,11 @@ const LoadingComponent = () => {
 
   return (
     <div className="loading-container">
-      <img src="assets/loading.gif" alt="Loading GIF" className="loading-gif" />
+      <img
+        src="https://velog.velcdn.com/images/donggni0712/post/1ecf0581-8d06-4f01-b3c3-242d44cf6b76/image.gif"
+        alt="Loading GIF"
+        className="loading-gif"
+      />
       <div className="loading-text">로딩중{dots}</div>
     </div>
   );
