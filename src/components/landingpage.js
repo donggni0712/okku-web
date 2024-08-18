@@ -195,14 +195,6 @@ const LandingPage = ({ onLoginSuccess }) => {
             </div>
           </div>
           {/* 쇼핑몰 로고 스크롤 */}
-          <div className="partners-container">
-            <div className="scrolling-logos">
-              <img src="assets/musinsa.png" alt="무신사" />
-              <img src="assets/ably.png" alt="에이블리" />
-              <img src="assets/zigzag.png" alt="지그재그" />
-              {/* 추가 로고 이미지들 */}
-            </div>
-          </div>
 
           {/* URL 입력 및 분석 버튼 */}
           <div className="url-input-container">
@@ -213,7 +205,7 @@ const LandingPage = ({ onLoginSuccess }) => {
               onChange={handleInputChange}
             />
             <button className="analyze-button" onClick={handleAnalyze}>
-              상품 분석하기!
+              리뷰 보기
             </button>
           </div>
           <div style={{ color: "#888" }}>
@@ -221,6 +213,14 @@ const LandingPage = ({ onLoginSuccess }) => {
           </div>
           <div className="login-button">
             <KakaoLoginButton onLoginSuccess={onLoginSuccess} />
+          </div>
+          <div className="partners-container">
+            <div className="scrolling-logos">
+              <img src="assets/musinsa.png" alt="무신사" />
+              <img src="assets/ably.png" alt="에이블리" />
+              <img src="assets/zigzag.png" alt="지그재그" />
+              {/* 추가 로고 이미지들 */}
+            </div>
           </div>
           <div className="join-kakaotalk-button">
             <a
