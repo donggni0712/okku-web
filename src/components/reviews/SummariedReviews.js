@@ -98,7 +98,7 @@ const SummariedReviews = ({ productPk, platform, reviews, onLoginSuccess }) => {
   );
 
   return (
-    <div>
+    <div className="reviews-wrapper">
       {/* 탭 버튼 */}
       <div className="tab-container">
         <button
