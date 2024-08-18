@@ -49,6 +49,7 @@
   align-items: flex-start;
   flex: 1; /* 로고 옆의 텍스트가 남은 공간을 차지하게 설정 */
 }
+
 .title-text p {
   margin: 0;
   display: flex;
@@ -64,7 +65,7 @@
 .partners-container {
   overflow: hidden;
   white-space: nowrap;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
 }
 
 .scrolling-logos {
@@ -100,7 +101,7 @@
   max-width: 300px;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 15px;
   margin-right: 10px;
 }
 
@@ -117,7 +118,7 @@
   color: #fff;
   border: none;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
 }
 
@@ -134,7 +135,7 @@
   display: flex;
   justify-content: center;
   padding-top: 1em;
-  padding-bottom: 100px;
+  padding-bottom: 20px;
 }
 
 .join-kakaotalk-button {
@@ -172,7 +173,7 @@
   background-color: #303d4c; /* 피드백 버튼 배경색 */
   color: #fff; /* 텍스트 색상 */
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px 14px;
   font-size: 14px;
   font-weight: bold;
@@ -206,7 +207,7 @@
   background-color: #ef4452; /* 피드백 버튼 배경색 */
   color: #fff; /* 텍스트 색상 */
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px 14px;
   font-size: 14px;
   font-weight: bold;
@@ -240,7 +241,7 @@
   background-color: #fbb3b9; /* 피드백 버튼 배경색 */
   color: #000; /* 텍스트 색상 */
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px 14px;
   font-size: 14px;
   font-weight: bold;

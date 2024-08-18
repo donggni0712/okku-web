@@ -8,8 +8,10 @@
 .tab-button {
   flex: 1;
   padding: 10px;
+  margin-left: 1em;
+  margin-right: 1em;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 15px;
   font-size: 1em;
   cursor: pointer;
   outline: none;
@@ -31,7 +33,7 @@
 
 .review-item {
   background-color: #f9f9f9;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 15px;
   cursor: pointer;
   border: 1px solid #ddd;
@@ -40,6 +42,8 @@
   align-items: flex-start;
   justify-content: space-between;
   position: relative;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .review-item:hover {
@@ -97,7 +101,7 @@
   max-width: auto;
   height: 60px;
   margin-left: 20px;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .review-content {

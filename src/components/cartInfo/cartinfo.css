@@ -19,7 +19,7 @@
   font-weight: bold;
   cursor: pointer;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   color: white;
 }

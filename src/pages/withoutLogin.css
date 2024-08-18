@@ -33,7 +33,7 @@
   background-color: #303d4c; /* 피드백 버튼 배경색 */
   color: #fff; /* 텍스트 색상 */
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px 14px;
   font-size: 14px;
   font-weight: bold;
@@ -67,7 +67,7 @@
   background-color: #ef4452; /* 피드백 버튼 배경색 */
   color: #fff; /* 텍스트 색상 */
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px 14px;
   font-size: 14px;
   font-weight: bold;
@@ -101,7 +101,7 @@
   background-color: #fbb3b9; /* 피드백 버튼 배경색 */
   color: #000; /* 텍스트 색상 */
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px 14px;
   font-size: 14px;
   font-weight: bold;
