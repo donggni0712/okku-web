@@ -44,7 +44,7 @@ const PickPage = ({ isLoggedIn, handleLoginSuccess }) => {
   return (
     <div className="App">
       {isLoggedIn ? (
-        <div className="reviews-container">
+        <div>
           <div className="pick-header">
             <button className="back-button" onClick={handleBack}>
               &lt;
