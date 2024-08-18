@@ -10,7 +10,7 @@ const PickPageWithoutLogin = ({ data, onLoginSuccess, setData }) => {
   };
   return (
     <div className="App">
-      <div className="reviews-container">
+      <div>
         <div className="pick-header">
           <button className="back-button" onClick={handleBack}>
             &lt;
