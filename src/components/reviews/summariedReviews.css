@@ -129,9 +129,10 @@
 }
 
 .reviews-wrapper {
-  background-color: #505050;
+  background-color: #b7b7b7;
   border-radius: 15px 15px 0 0; /* 위쪽 모서리에만 border-radius 적용 */
   overflow: hidden; /* 자식 요소가 모서리를 넘어서지 않도록 처리 */
+  height: 100%;
 }
 
 .review-item.open .review-details {
