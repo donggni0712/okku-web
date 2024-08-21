@@ -13,7 +13,7 @@ import { track } from "@vercel/analytics";
 
 import AnalyzingComponent from "./loading/AnalyzingComponent";
 import { getItemInfoWithoutLogin } from "../api/getItemInfoWithoutLogin";
-
+const FITTING_URL = process.env.REACT_APP_TEMP_FITTING_URL;
 const LandingPage = ({ onLoginSuccess }) => {
   const [animatedText, setAnimatedText] = useState(["", ""]);
   const [url, setUrl] = useState("");
@@ -26,6 +26,15 @@ const LandingPage = ({ onLoginSuccess }) => {
     ReactGA.event({
       category: "Join open chating",
       action: `Clicked ${referer} button`,
+      label: `Landing`,
+    });
+  };
+
+  const handleAIButtonClick = () => {
+    track(`Clicked_AIFitting`);
+    ReactGA.event({
+      category: "Clicked_AIFitting",
+      action: `Clicked Clicked_AIFitting button`,
       label: `Landing`,
     });
   };
@@ -213,6 +222,25 @@ const LandingPage = ({ onLoginSuccess }) => {
           </div>
           <div className="login-button">
             <KakaoLoginButton onLoginSuccess={onLoginSuccess} />
+          </div>
+          <div className="new-component">
+            <img
+              src="assets/aiFitting.png"
+              alt="설명 이미지"
+              className="image-left"
+            />
+            <div className="text-and-button-right">
+              <p>AI 가상 피팅 기능이 베타 출시했습니다!</p>
+              <p>베타 기간동안 무료로 기능을 제공합니다</p>
+              <a
+                href={FITTING_URL}
+                className="fitting-button"
+                onClick={() => handleAIButtonClick}
+              >
+                <img src="assets/dress.png" />
+                AI 가상 피팅하기
+              </a>
+            </div>
           </div>
           <div className="partners-container">
             <div className="scrolling-logos">
