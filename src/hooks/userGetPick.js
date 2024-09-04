@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { getPicks } from "../api/getPicks";
 
-const useGetPicks = (setPickData, cartId = null, page = 1, size = 30) => {
+const useGetPicks = (setPickData, cartId = null, page = 0, size = 30) => {
   const [getPickData, setGetPickData] = useState([]);
   const [getPickLoading, setLoading] = useState(true);
   const [getPickError, setError] = useState(null);
